@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Muldoon</title>
+    </head>
+    <body>
+        <div id="titleBar">
+            <img src="../HtmlPage/logo1.png" id="logo">
+            <h1>Muldoon</h1>
+        </div>
+        <div id="navBar">
+            <a>Home</a>
+            <a>Graphs</a>
+            <a>MEDA</a>
+            <a>Astrojack</a>
+        </div>
+        <div id="content">
+            <div id="graphInput">
+                <label for="sol">Sol:</label>
+                <input type="number" id="sol" name="sol" min="1" max="1000">
+                <br>
+                <label for="startTime">Graph Start Time:</label>
+                <input type="number" id="startTime" name="startTime" min="0" max="1000" value="0">
+                <br>
+                <label for="endTime">Graph End Time:</label>
+                <input type="number" id="endTime" name="endTime" min="0" max="1000" value="1000">
+                <br>
+                <label for="showSpeed">View Wind Speed:</label>
+                <input type="checkbox" id="showSpeed" name="showSpeed">
+                <br>
+                <label for="showPressure">View Air Pressure:</label>
+                <input type="checkbox" id="showPressure" name="showPressure">
+                <br>
+                <button>Plot Graph</button>
+                <br>
+                <p>
+                    To generate a graph, first select a sol number to view.
+                    Optionally, adjust the graph start and end times to view range subset of the data from the selected sol.
+                    Check if the graph should display the wind speed and/or air pressure and finally click the 'Plot Graph' button to generate the graph.
+                </p>
+                <p>
+                    After generating the graph it can be interacted with by (TODO: add interaction instructions after implementation)
+                </p>
+                <p>
+                    The currently viewed graph may also be exported and shared either as an image, or as a url which will link back to the same graph with the same settings.
+                    To do so, click the 'Export Image' or 'Export URL' buttons respectively.
+                </p>
+            </div>
+            <div id="graph">
+                <h2>MEDA Data Sol #X</h2>
+                <img src="GraphPlaceholder.png">
+                <div id="export">
+                    <button>Export Image</button>
+                    <button>Export URL</button>
+                </div>
+            </div>
+        </div>
+        <div id="footerBar">
+            (TODO: add footer content)
+        </div>
+    </body>
+</html>
