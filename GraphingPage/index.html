@@ -63,14 +63,6 @@
                   <script>
                     drawChart();
                     async function drawChart(){
-                //    let filename  ='book2.csv';
-                //    d3.csv(filename).then(function(loadedData){
-                //     let temp = [];
-                //     let day =[];
-                //     for(i=0; i<loadedData.length; i++){
-                //         day.push(loadedData[i].day)
-                //         temp.push(loadedData[i].ATS_LOCAL_TEMP1)
-                //     }
                     const ctx = document.getElementById('myChart');
                     new Chart(ctx, {
                       type: 'line',
@@ -107,8 +99,7 @@
                     fetch(url, {
                         method: 'GET',
                         mode:"no-cors",
-                    }
-                    )
+                    })
                 }
                   </script>
                 <div id="export">
