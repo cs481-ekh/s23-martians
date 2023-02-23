@@ -63,22 +63,25 @@
                   <script>
                     drawChart();
                     async function drawChart(){
+                    const dataPoints = await getData();
                     const ctx = document.getElementById('myChart');
                     new Chart(ctx, {
                       type: 'line',
                       data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange','Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        labels: [0,1,2,3,4,5,6,7,8,9], //x axis
                         datasets: [{
                           label: 'change',
-                          data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3],
+                          data: dataPoints, //y axis
                           borderWidth: 1
                         }]
                       },
                       options: {
                         scales: {
                           y: {
-                            beginAtZero: true
-                          }
+                            beginAtZero: true,
+                            max: 1000
+                          },
+                          
                         },
                         plugins: {
                             zoom: {
@@ -95,13 +98,32 @@
                    };
                    
                 async function getData(){
-                    const url ='https://pds-atmospheres.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0000_0089/sol_0001/WE__0001___________DER_PS__________________P02.CSV'
-                    fetch(url, {
-                        method: 'GET',
-                        mode:"no-cors",
-                    })
+                    //works
+                    d3.csv('WE__0001___________DER_PS__________________P02.csv').then(function(results){
+                        let pressure = [];
+                        let sol = [];
+                        let newArray = [];
+                        for(i= 0; i<10; i++){
+
+                        
+                           let bar = results[i].PRESSURE;
+                           let time = results[i].LMST;
+                           newArray.push("sol: " + time+ ', ' + "pressure: "+ bar);
+                           pressure.push(bar);
+                           sol.push(time);
+                            
+                        }
+                        console.log(sol);
+                        console.log(newArray);
+                        
+                        
+                       return {pressure, sol}
+                        })
+                          
                 }
                   </script>
+
+                  
                 <div id="export">
                     <button>Export Image</button>
                     <button>Export URL</button>
