@@ -53,7 +53,7 @@
                 <div>
                     
                   </div>
-                             <button id= "click" onclick="getData()">CLick</button>
+                             <button id= "click" onclick="drawChart()">Draw Chart</button>
                   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js" integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -63,22 +63,42 @@
                   <script>
                     drawChart();
                     async function drawChart(){
+                        //simple csv parse to pull the MEDA data
+                    d3.csv('./tests/WE__0001___________DER_PS__________________P02.csv').then(function(results){
+                        console.log(results)
+                        let pressure = [];
+                        let sol = [];
+                        
+                        //this is just to grab a small sample size.
+                        //Possible to be updated to change the starting value of i and the 
+                        //upper limit to what the user selects for sol range.
+                        for(i= 0; i<10; i++){
+                           let bar = results[i].PRESSURE;
+                           let time = results[i].LMST;
+                          
+                           pressure.push(bar);
+                           sol.push(time);
+                            
+                        }
+                    
                     const ctx = document.getElementById('myChart');
                     new Chart(ctx, {
                       type: 'line',
                       data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange','Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        labels: sol, //x axis
                         datasets: [{
                           label: 'change',
-                          data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3],
+                          data: pressure, //y axis
                           borderWidth: 1
                         }]
                       },
                       options: {
                         scales: {
                           y: {
-                            beginAtZero: true
-                          }
+                            beginAtZero: true,
+                            
+                          },
+                          
                         },
                         plugins: {
                             zoom: {
@@ -92,16 +112,24 @@
                       }
                     });
                    Chart.register(zoomPlugin);
-                   };
+                   });
+                };
                    
-                async function getData(){
-                    const url ='https://pds-atmospheres.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0000_0089/sol_0001/WE__0001___________DER_PS__________________P02.CSV'
-                    fetch(url, {
-                        method: 'GET',
-                        mode:"no-cors",
-                    })
-                }
+                /*
+                Attempt to get the fetch to work.
+                */
+                // async function getData(){
+                //     const url = 'https://pds-atmospheres.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0180_0299/sol_0190/WE__0190___________DER_WS__________________P02.CSV'
+                //     //  
+
+                //     let myObject = await fetch(url, {
+                //         mode: 'no-cors'
+                //     });
+         
+                // }
                   </script>
+
+                  
                 <div id="export">
                     <button>Export Image</button>
                     <button>Export URL</button>
