@@ -71,7 +71,7 @@ button {
     text-align: center;
 }
 
-#footerBar{
+#footerBar {
     position: absolute;
     bottom: 0;
     color: white;
@@ -80,4 +80,13 @@ button {
     text-align: center;
     background-color: #5E644A;
     border-top: 1px solid black;
+}
+
+.aligned {
+    display: flex;
+    align-items: center;
+}
+
+.aligned span {
+    padding: 0px 10px;
 }
