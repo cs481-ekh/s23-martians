@@ -54,6 +54,7 @@
                     
                   </div>
                              <button id= "click" onclick="drawChart()">Draw Chart</button>
+                             
                   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js" integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -64,7 +65,7 @@
                     drawChart();
                     async function drawChart(){
                         //simple csv parse to pull the MEDA data
-                    d3.csv('./tests/WE__0001___________DER_PS__________________P02.csv').then(function(results){
+                    d3.csv('.././tests/WE__0001___________DER_PS__________________P02.csv').then(function(results){
                         console.log(results)
                         let pressure = [];
                         let sol = [];
@@ -80,26 +81,47 @@
                            sol.push(time);
                             
                         }
-                    
+                        d3.csv('.././tests/WE__0190___________DER_WS__________________P02.csv').then(function(results){
+                        
+                        let windSpeed = [];
+                        
+                        //This repeats the earlier process of parsing the file
+                        //and placing the values for a small sample size into an
+                        //array.
+                        for(i= 0; i<10; i++){
+                           let speed = results[i].HORIZONTAL_WIND_SPEED;
+
+                           windSpeed.push(speed);
+   
+                        }
+
                     const ctx = document.getElementById('myChart');
                     new Chart(ctx, {
                       type: 'line',
                       data: {
                         labels: sol, //x axis
                         datasets: [{
-                          label: 'change',
+                        //this is how the pressure is mapped on the graph
+                          label: 'pressure',
                           data: pressure, //y axis
                           borderWidth: 1
-                        }]
+                        },
+                        {
+                        //this is how the wind speed is mapped on the graph
+                          label: 'wind speed',
+                          data: windSpeed, //y axis
+                          borderWidth: 1
+                    }],
                       },
                       options: {
                         scales: {
                           y: {
                             beginAtZero: true,
-                            
                           },
-                          
+
                         },
+                        //this is the place for the different plugins and effects
+                        //that can be used in the graph
                         plugins: {
                             zoom: {
                                 zoom: {
@@ -113,6 +135,7 @@
                     });
                    Chart.register(zoomPlugin);
                    });
+                    });
                 };
                    
                 /*
