@@ -6,10 +6,10 @@ services:
     networks:
       - nginx_net
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/server.conf:/etc/nginx/conf.d/server.conf
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./GraphingPage/:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:Z
+      - ./nginx/server.conf:/etc/nginx/conf.d/server.conf:Z
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:Z
+      - ./GraphingPage/:/usr/share/nginx/html:Z
 
     ports:
       - "${HOST_PORT:-8100}:80"
