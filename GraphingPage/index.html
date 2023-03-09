@@ -53,12 +53,13 @@
                 <div>
                     
                   </div>
-                             <button id= "click" onclick="drawChart()">Draw Chart</button>
+                             <button type = "button" id= "click" onclick="pullData()">Draw Chart</button>
                              
                   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js" integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                   <script src="https://d3js.org/d3.v7.min.js"></script>.
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
             <canvas id="myChart"></canvas>
                     
                   <script>
@@ -76,53 +77,71 @@
                     };
                     drawChart();
                     async function drawChart(){
-                        //simple csv parse to pull the MEDA data
-                    d3.csv('.././tests/WE__0001___________DER_PS__________________P02.csv').then(function(results){
-                        console.log(results)
-                        let pressure = [];
-                        let sol = [];
                         
-                        //this is just to grab a small sample size.
-                        //Possible to be updated to change the starting value of i and the 
-                        //upper limit to what the user selects for sol range.
-                        for(i= 0; i<10; i++){
-                           let bar = results[i].PRESSURE;
-                           let time = results[i].LMST;
-                          
-                           pressure.push(bar);
-                           sol.push(time);
-                            
+                        const pressure2 = [];
+                        const sol2 = [];
+                    jQuery.get('https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0300_0419/sol_0304/WE__0304___________DER_PS__________________P01.CSV',
+                    function (csvdata) {
+                    
+                    Papa.parse(csvdata,{
+                        header: true,
+                        complete: function(results) {
+		                console.log(results);
+                        console.log("1");
+                        console.log(results.data[0].PRESSURE)
+                        for(i =0; i<10; i++){
+                            pressure2.push(results.data[i].PRESSURE);
+                            sol2.push(results.data[i].LMST)
                         }
-                        d3.csv('.././tests/WE__0190___________DER_WS__________________P02.csv').then(function(results){
+                        console.log(pressure2);
+                    }
+                    });
+                    
                         
-                        let windSpeed = [];
-                        
-                        //This repeats the earlier process of parsing the file
-                        //and placing the values for a small sample size into an
-                        //array.
-                        for(i= 0; i<10; i++){
-                           let speed = results[i].HORIZONTAL_WIND_SPEED;
+                    
+                })
+                const windSpeed2 = [];
+                    jQuery.get('https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0300_0419/sol_0304/WE__304___________DER_WS__________________P01.csv',
+                    function (csvdata1) {
+                    
+                    Papa.parse(csvdata1,{
+                        header: true,
+                        complete: function(results) {
+                            console.log(results);
+                        for(i =0; i<10; i++){
+                            windSpeed2.push(results.data[i].HORIZONTAL_WIND_SPEED);
 
-                           windSpeed.push(speed);
-   
+                            }
                         }
+                    });
+
+                })
+
+                        //simple csv parse to pull the MEDA data
+                   // d3.csv('.././tests/WE__0001___________DER_PS__________________P02.csv').then(function(results){
+                        
+                    d3.csv('.././tests/WE__0190___________DER_WS__________________P02.csv').then(function(results){
 
                     const ctx = document.getElementById('myChart');
                     chart = new Chart(ctx, {
                       type: 'line',
                       data: {
-                        labels: sol, //x axis
+                        labels: sol2, //x axis
                         datasets: [{
                         //this is how the pressure is mapped on the graph
                           label: 'pressure',
-                          data: pressure, //y axis
-                          borderWidth: 1,
+
+                          data: pressure2, //y axis
+                          borderWidth: 1
+
                         },
                         {
                         //this is how the wind speed is mapped on the graph
                           label: 'wind speed',
-                          data: windSpeed, //y axis
-                          borderWidth: 1,
+
+                          data: windSpeed2, //y axis
+                          borderWidth: 1
+
                     }],
                       },
                       options: {
@@ -151,19 +170,31 @@
                     });
                    Chart.register(zoomPlugin);
                    });
-                    });
-                };
-                   
-                /*
-                Attempt to get the fetch to work.
-                */
-                // async function getData(){
-                //     const url = 'https://pds-atmospheres.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0180_0299/sol_0190/WE__0190___________DER_WS__________________P02.CSV'
-                //     //  
+                    };
+               
+            
+                </script>
 
-                //     let myObject = await fetch(url, {
-                //         mode: 'no-cors'
+                <script>
+                //      function pullData(){
+                //     const pressure = [];
+                //     const sol = [];
+                //     jQuery.get('https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0300_0419/sol_0304/WE__0304___________DER_PS__________________P01.CSV',
+                //     function (csvdata) {
+                    
+                //     Papa.parse(csvdata,{
+                //         header: true,
+                //         complete: function(results) {
+		        //         console.log(results);
+                        
+                //         console.log(results.data[0].PRESSURE)
+                //         for(i =0; i<10; i++){
+                //             pressure.push(results.data[i].PRESSURE);
+                //         }
+                //         console.log(pressure);
+                //     }
                 //     });
+
          
                 // }
 
@@ -175,6 +206,7 @@
                     element.click();
                 }
                   </script>
+
 
                   
                 <div id="export">
