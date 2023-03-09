@@ -63,6 +63,18 @@
             <canvas id="myChart"></canvas>
                     
                   <script>
+                    let chart = null;
+                    const bgColor = {
+                        id: 'bgColor',
+                        beforeDraw: (chart, args, options) => {
+                            const {ctx} = chart;
+                            ctx.save();
+                            ctx.globalCompositeOperation = 'destination-over';
+                            ctx.fillStyle = options.color;
+                            ctx.fillRect(0, 0, chart.width, chart.height);
+                            ctx.restore();
+                        }
+                    };
                     drawChart();
                     async function drawChart(){
                         
@@ -111,21 +123,25 @@
                     d3.csv('.././tests/WE__0190___________DER_WS__________________P02.csv').then(function(results){
 
                     const ctx = document.getElementById('myChart');
-                    new Chart(ctx, {
+                    chart = new Chart(ctx, {
                       type: 'line',
                       data: {
                         labels: sol2, //x axis
                         datasets: [{
                         //this is how the pressure is mapped on the graph
                           label: 'pressure',
+
                           data: pressure2, //y axis
                           borderWidth: 1
+
                         },
                         {
                         //this is how the wind speed is mapped on the graph
                           label: 'wind speed',
+
                           data: windSpeed2, //y axis
                           borderWidth: 1
+
                     }],
                       },
                       options: {
@@ -144,9 +160,13 @@
                                         enabled: true
                                     }
                                 }
+                            },
+                            bgColor: {
+                                color: 'white'
                             }
                         }
-                      }
+                      },
+                      plugins: [bgColor]
                     });
                    Chart.register(zoomPlugin);
                    });
@@ -174,16 +194,23 @@
                 //         console.log(pressure);
                 //     }
                 //     });
-                    
-                        
-                    
-                // });
-                //     }
-                </script>
-            
+
+         
+                // }
+
+
+                async function exportImage(){
+                    let element = document.createElement('a');
+                    element.href = chart.toBase64Image();
+                    element.download = 'graph_export.png';
+                    element.click();
+                }
+                  </script>
+
+
                   
                 <div id="export">
-                    <button>Export Image</button>
+                    <button onclick="exportImage()">Export Image</button>
                     <button>Export URL</button>
                 </div>
             </div>
