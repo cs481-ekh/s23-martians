@@ -205,13 +205,23 @@
                     element.download = 'graph_export.png';
                     element.click();
                 }
+
+                async function exportURL(){
+                    let urlBuilder = new URLSearchParams();
+                    urlBuilder.set('x1', chart.scales.x.min);
+                    urlBuilder.set('x2', chart.scales.x.max);
+                    urlBuilder.set('y1', chart.scales.y.min);
+                    urlBuilder.set('y2', chart.scales.y.max);
+                    document.getElementById('urlDisplay').innerHTML = 'URL Exported: ' + window.location.origin + window.location.pathname + '?' + urlBuilder.toString();
+                }
                   </script>
 
 
                   
                 <div id="export">
                     <button onclick="exportImage()">Export Image</button>
-                    <button>Export URL</button>
+                    <button onclick="exportURL()">Export URL</button>
+                    <span id="urlDisplay"></span>
                 </div>
             </div>
         </div>
