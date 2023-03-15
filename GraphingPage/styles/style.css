@@ -91,3 +91,7 @@ button {
 .aligned span {
     padding: 0px 10px;
 }
+
+input:invalid {
+    background-color: lightpink;
+}
