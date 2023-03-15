@@ -1,3 +1,6 @@
+//-----------------------------------
+// Mission Sol functions
+//-----------------------------------
 function setMaxSol(sol, solLabel) {
   // Mars Sol length: 24h 39m 35.244s
   // Perseverance (rover) landed 2021-02-18 20:55 UTC
@@ -13,4 +16,6 @@ function setMaxSol(sol, solLabel) {
 const sol = document.querySelector('#sol');
 const solLabel = document.querySelector('#solLabel');
 
-setMaxSol(sol, solLabel);
+document.addEventListener("DOMContentLoaded", () => {
+    setMaxSol(sol, solLabel);
+});
