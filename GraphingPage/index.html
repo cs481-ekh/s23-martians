@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="./styles/style.css">
         <title>Muldoon</title>
+        <script src="./libs/plotly-2.18.2.min.js"></script>
+        <script src="./libs/d3.v7.min.js"></script>
     </head>
     <body>
         <div id="titleBar">
@@ -47,6 +49,8 @@
                     To do so, click the 'Export Image' or 'Export URL' buttons respectively.
                 </p>
             </div>
+            <div id="graph"></div>
+            <!-- 
             <div id="graph">
                 <h2>MEDA Data Sol #X</h2>
                 
@@ -224,6 +228,7 @@
                     <span id="urlDisplay"></span>
                 </div>
             </div>
+            -->
         </div>
         <div id="footerBar">
             <div class="aligned">
@@ -233,5 +238,6 @@
         </div>
 
         <script src="./js/muldoon.js"></script>
+        <script src="./js/meda-chart.js"></script>
     </body>
 </html>
