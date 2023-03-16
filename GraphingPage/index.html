@@ -26,7 +26,7 @@
                 <input type="text" id="startTime" name="startTime" value="00:00:00" size="8" pattern="^(([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])|(24:[0-2][0-9]:[0-5][0-9])|(24:3[0-8]:[0-5][0-9])|(24:39:([0-2][0-9]|3[0-4]))$">
                 <br>
                 <label for="endTime">Graph End Time (hh:mm:ss):</label>
-                <input type="text" id="startTime" name="endTime" value="24:39:35" size="8" pattern="^(([0-1][0-9]|2[0-3]):[0-5][0-9]:(0[1-9]|[1-5][0-9]))|(24:[0-2][0-9]:[0-5][0-9])|(24:3[0-8]:[0-5][0-9])|(24:39:([0-2][0-9]|3[0-5]))$">
+                <input type="text" id="endTime" name="endTime" value="24:39:35" size="8" pattern="^(([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])|(24:[0-2][0-9]:[0-5][0-9])|(24:3[0-8]:[0-5][0-9])|(24:39:([0-2][0-9]|3[0-5]))$">
                 <br>
                 <label for="showSpeed">View Wind Speed:</label>
                 <input type="checkbox" id="showSpeed" name="showSpeed">
@@ -34,7 +34,7 @@
                 <label for="showPressure">View Air Pressure:</label>
                 <input type="checkbox" id="showPressure" name="showPressure">
                 <br>
-                <button>Plot Graph</button>
+                <button id="plotGraphBtn">Plot Graph</button>
                 <br>
                 <p>
                     To generate a graph, first select a sol number to view.
@@ -51,158 +51,10 @@
             </div>
             <div id="graph"></div>
             <!-- 
-            <div id="graph">
-                <h2>MEDA Data Sol #X</h2>
-                
-                <div>
-                    
-                  </div>
-                             <button type = "button" id= "click" onclick="pullData()">Draw Chart</button>
-                             
-                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js" integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                  <script src="https://d3js.org/d3.v7.min.js"></script>.
-                  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
             <canvas id="myChart"></canvas>
-                    
-                  <script>
-                    let chart = null;
-                    const bgColor = {
-                        id: 'bgColor',
-                        beforeDraw: (chart, args, options) => {
-                            const {ctx} = chart;
-                            ctx.save();
-                            ctx.globalCompositeOperation = 'destination-over';
-                            ctx.fillStyle = options.color;
-                            ctx.fillRect(0, 0, chart.width, chart.height);
-                            ctx.restore();
-                        }
-                    };
-                    drawChart();
-                    async function drawChart(){
-                        
-                        const pressure2 = [];
-                        const sol2 = [];
-                    jQuery.get('https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0300_0419/sol_0304/WE__0304___________DER_PS__________________P01.CSV',
-                    function (csvdata) {
-                    
-                    Papa.parse(csvdata,{
-                        header: true,
-                        complete: function(results) {
-		                console.log(results);
-                        console.log("1");
-                        console.log(results.data[0].PRESSURE)
-                        for(i =0; i<10; i++){
-                            pressure2.push(results.data[i].PRESSURE);
-                            sol2.push(results.data[i].LMST)
-                        }
-                        console.log(pressure2);
-                    }
-                    });
-                    
-                        
-                    
-                })
-                const windSpeed2 = [];
-                    jQuery.get('https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0300_0419/sol_0304/WE__304___________DER_WS__________________P01.csv',
-                    function (csvdata1) {
-                    
-                    Papa.parse(csvdata1,{
-                        header: true,
-                        complete: function(results) {
-                            console.log(results);
-                        for(i =0; i<10; i++){
-                            windSpeed2.push(results.data[i].HORIZONTAL_WIND_SPEED);
-
-                            }
-                        }
-                    });
-
-                })
-
-                        //simple csv parse to pull the MEDA data
-                   // d3.csv('.././tests/WE__0001___________DER_PS__________________P02.csv').then(function(results){
-                        
-                    d3.csv('.././tests/WE__0190___________DER_WS__________________P02.csv').then(function(results){
-
-                    const ctx = document.getElementById('myChart');
-                    chart = new Chart(ctx, {
-                      type: 'line',
-                      data: {
-                        labels: sol2, //x axis
-                        datasets: [{
-                        //this is how the pressure is mapped on the graph
-                          label: 'pressure',
-
-                          data: pressure2, //y axis
-                          borderWidth: 1
-
-                        },
-                        {
-                        //this is how the wind speed is mapped on the graph
-                          label: 'wind speed',
-
-                          data: windSpeed2, //y axis
-                          borderWidth: 1
-
-                    }],
-                      },
-                      options: {
-                        scales: {
-                          y: {
-                            beginAtZero: true,
-                          },
-
-                        },
-                        //this is the place for the different plugins and effects
-                        //that can be used in the graph
-                        plugins: {
-                            zoom: {
-                                zoom: {
-                                    drag: {
-                                        enabled: true
-                                    }
-                                }
-                            },
-                            bgColor: {
-                                color: 'white'
-                            }
-                        }
-                      },
-                      plugins: [bgColor]
-                    });
-                   Chart.register(zoomPlugin);
-                   });
-                    };
-               
-            
-                </script>
-
-                <script>
-                //      function pullData(){
-                //     const pressure = [];
-                //     const sol = [];
-                //     jQuery.get('https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0300_0419/sol_0304/WE__0304___________DER_PS__________________P01.CSV',
-                //     function (csvdata) {
-                    
-                //     Papa.parse(csvdata,{
-                //         header: true,
-                //         complete: function(results) {
-		        //         console.log(results);
-                        
-                //         console.log(results.data[0].PRESSURE)
-                //         for(i =0; i<10; i++){
-                //             pressure.push(results.data[i].PRESSURE);
-                //         }
-                //         console.log(pressure);
-                //     }
-                //     });
-
-         
-                // }
-
-
+            <script>
                 async function exportImage(){
                     let element = document.createElement('a');
                     element.href = chart.toBase64Image();
@@ -218,17 +70,16 @@
                     urlBuilder.set('y2', chart.scales.y.max);
                     document.getElementById('urlDisplay').innerHTML = 'URL Exported: ' + window.location.origin + window.location.pathname + '?' + urlBuilder.toString();
                 }
-                  </script>
+            </script>
 
 
                   
-                <div id="export">
-                    <button onclick="exportImage()">Export Image</button>
-                    <button onclick="exportURL()">Export URL</button>
-                    <span id="urlDisplay"></span>
-                </div>
-                -->
+            <div id="export">
+                <button onclick="exportImage()">Export Image</button>
+                <button onclick="exportURL()">Export URL</button>
+                <span id="urlDisplay"></span>
             </div>
+            -->
         </div>
         <div id="footerBar">
             <div class="aligned">
