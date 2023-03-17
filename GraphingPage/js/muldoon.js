@@ -36,10 +36,11 @@ const medaFiles = function() {
     d3.csvParseRows(data, (d, i) => {
       let rowData = d[1].split(/[:]+/);
       let revision = rowData[6].replace(/\.\d$/, '');
-      let filename = rowData[5] + revision + ".csv";
-      let sensor_id = rowData[5].search(/der_(\w+)/);
-
-      console.log("filename: " + filename.toUpperCase() + " revision: " + revision + " sensor_id: " + sensor_id);
+      let fName = rowData[5] + revision + ".csv";
+      let id = fName.match(/\d{4}/);
+      let sensor_id = (rowData[5].match(/(ancillary|ps|rhs|tirs|ws)/i))[0];
+      
+      console.log("id: " + id + " filename: " + fName.toUpperCase() + " revision: " + revision + " sensor_id: " + sensor_id.toUpperCase());
     });
   });
 }
