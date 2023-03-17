@@ -1,22 +1,35 @@
 const plotGraph = function () {
-  let parentDataDir = getParentDataDir(sol.value);
-  let solId = sol.value.padStart(4, '0');
-  let rawPSDataURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/" + parentDataDir + "/sol_" + solId + "/WE__" + solId + "___________DER_PS__________________P01.CSV";
+  let sensorName = sensor.options[sensor.selectedIndex].text;
+  let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
 
-  console.log("Sol ID: " + solId);
-  console.log("Parent data dir: " + parentDataDir);
-  console.log(rawPSDataURL);
+  if (medaRef === undefined) {
+    myChart.innerHTML = "Perseverence MEDA data not found for Sol " + sol.value + " " + sensorName + " sensor.";
+    return;
+  }
+  
+  let parent = medaRef.parent;
+  let directory = medaRef.directory;
+  let filename = medaRef.filename;
+  let rawDataURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/" + parent + "/" + directory + "/" + filename;
 
-  // This block is for PRESSURE data
-  d3.csv(rawPSDataURL).then(function (rawData) {
-    var xField = 'LMST';
-    var yField = 'PRESSURE';
+  myChart.innerHTML = "Processing Perseverence MEDA...";
 
+  console.log("Parent: " + parent);
+  console.log("Directory: " + directory);
+  console.log("Filename: " + filename);
+  console.log(rawDataURL);
+
+  // Load MEDA data and Generate a Plotly datavis.
+  d3.csv(rawDataURL).then(function (rawData) {
+    var xField = medaRef.xField;
+    var yField = medaRef.yField;
+
+    var plotTitle = "Perseverence MEDA Data: " + sensorName + " for Sol " + sol.value + ", " + startTime.value + " to " + endTime.value;
     var data = prepData(rawData, xField, yField);
 
     var layout = {
       showlegend: true,
-      title: "Mars 2020 MEDA Data - Sol " + sol.value + ", " + startTime.value + " to " + endTime.value,
+      title: plotTitle,
       xaxis: {
         automargin: true,
         tickangle: 45,
@@ -40,6 +53,8 @@ const plotGraph = function () {
       displaylogo: false,
       modeBarButtonsToRemove: ['autoScale2d', 'lasso2d', 'select2d']
     };
+
+    myChart.innerHTML = "";
 
     Plotly.newPlot(myChart, data, layout, config);
   });
@@ -75,26 +90,6 @@ function convertToSeconds(str) {
   let data = str.split(':').map(Number);
 
   return (data[0] * 3600) + (data[1] * 60) + data[2];
-}
-
-function getParentDataDir(n) {
-  if (n <= 89) {
-    return 'sol_0000_0089';
-  }
-  else if (n <= 179) {
-    return 'sol_0090_0179';
-  }
-  else if (n <= 299) {
-    return 'sol_0180_0299';
-  }
-  else if (n <= 419) {
-    return 'sol_0300_0419';
-  }
-  else if (n <= 539) {
-    return 'sol_0420_0539';
-  }
-
-  return;
 }
 
 plotGraphBtn.addEventListener('click', plotGraph, false);
