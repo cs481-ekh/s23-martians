@@ -23,5 +23,25 @@ function setMaxSol(sol, solLabel) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    setMaxSol(sol, solLabel);
+  setMaxSol(sol, solLabel);
 });
+
+//--------------------------------------------------------------
+// Initialize an Object with available MEDA data CSV file
+//--------------------------------------------------------------
+const medaInvURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/collection_meda_data_derived_env_inventory.csv";
+
+const medaFiles = function() {
+  d3.text(medaInvURL).then(function(data) {
+    d3.csvParseRows(data, (d, i) => {
+      let rowData = d[1].split(/[:]+/);
+      let revision = rowData[6].replace(/\.\d$/, '');
+      let filename = rowData[5] + revision + ".csv";
+      let sensor_id = rowData[5].search(/der_(\w+)/);
+
+      console.log("filename: " + filename.toUpperCase() + " revision: " + revision + " sensor_id: " + sensor_id);
+    });
+  });
+}
+
+medaFiles();
