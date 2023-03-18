@@ -3,7 +3,7 @@ const plotGraph = function () {
   let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
 
   if (medaRef === undefined) {
-    myChart.innerHTML = "Perseverence MEDA data not found for Sol " + sol.value + " " + sensorName + " sensor.";
+    myChart.innerHTML = "Perseverance MEDA data not found for Sol " + sol.value + " " + sensorName + " sensor.";
     return;
   }
   
@@ -12,7 +12,7 @@ const plotGraph = function () {
   let filename = medaRef.filename;
   let rawDataURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/" + parent + "/" + directory + "/" + filename;
 
-  myChart.innerHTML = "Processing Perseverence MEDA...";
+  myChart.innerHTML = "Processing Perseverance MEDA...";
 
   console.log("Parent: " + parent);
   console.log("Directory: " + directory);
@@ -24,7 +24,7 @@ const plotGraph = function () {
     var xField = medaRef.xField;
     var yField = medaRef.yField;
 
-    var plotTitle = "Perseverence MEDA Data: " + sensorName + " for Sol " + sol.value + ", " + startTime.value + " to " + endTime.value;
+    var plotTitle = "Perseverance MEDA Data: " + sensorName + " for Sol " + sol.value + ", " + startTime.value + " to " + endTime.value;
     var data = prepData(rawData, xField, yField);
 
     var layout = {
