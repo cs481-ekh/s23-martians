@@ -7,22 +7,18 @@ const plotGraph = function () {
     return;
   }
   
+  let collection = medaRef.collection;
   let parent = medaRef.parent;
   let directory = medaRef.directory;
   let filename = medaRef.filename;
-  let rawDataURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/data_derived_env/" + parent + "/" + directory + "/" + filename;
+  let rawDataURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/" + collection + "/" + parent + "/" + directory + "/" + filename;
 
-  myChart.innerHTML = "Processing Perseverance MEDA...";
+  myChart.innerHTML = "<div class='loading-container'><div class='loading'></div>Processing Perseverance MEDA</div>";
 
-  console.log("Parent: " + parent);
-  console.log("Directory: " + directory);
-  console.log("Filename: " + filename);
-  console.log(rawDataURL);
-
-  // Load MEDA data and Generate a Plotly datavis.
+  // Load MEDA data and generate a Plotly datavis.
   d3.csv(rawDataURL).then(function (rawData) {
     var xField = medaRef.xField;
-    var yField = medaRef.yField;
+    var yField = medaRef.yField[0];
 
     var plotTitle = "Perseverance MEDA Data: " + sensorName + " for Sol " + sol.value + ", " + startTime.value + " to " + endTime.value;
     var data = prepData(rawData, xField, yField);
@@ -72,8 +68,10 @@ function prepData(rawData, xField, yField) {
     let seconds = convertToSeconds(ts);
 
     if ((seconds >= startBoundary) && (seconds <= endBoundary)) {
-      x.push(datum[xField]);
-      y.push(datum[yField]);
+      if (!isNaN(datum[yField]) && !isNaN(parseFloat(datum[yField])) && (datum[yField] < 9999999)) {
+        x.push(datum[xField]);
+        y.push(datum[yField]);
+      }
     }
   });
 
