@@ -19,7 +19,8 @@
         </div>
         <div id="content">
             <div id="graphInput">
-                <label id="solLabel" for="sol">Sol (1-n):</label>
+                <div id="uiMsg" hidden></div>
+                <label id="solLabel" for="sol">Select Sol:</label>
                 <input type="number" id="sol" name="sol" min="1" max="10" value="1">
                 <br>
                 <label for="startTime">Graph Start Time (hh:mm:ss):</label>
@@ -30,10 +31,8 @@
                 <br>
                 <label for="sensor">Sensor:</label>
                 <select id="sensor">
-                    <option value="ANCILLARY" disabled>Ancillary (ANC)</option>
+                    <option value="ATS">Atmosphere (ATS)</option>
                     <option value="PS" selected>Pressure (PS)</option>
-                    <option value="RHS">Relative Humidity (RHS)</option>
-                    <option value="TIRS" disabled>Thermal Infared (TIR)</option>
                     <option value="WS">Wind (WS)</option>
                 </select>
                 <br>
@@ -74,8 +73,6 @@
                     document.getElementById('urlDisplay').innerHTML = 'URL Exported: ' + window.location.origin + window.location.pathname + '?' + urlBuilder.toString();
                 }
             </script>
-
-
                   
             <div id="export">
                 <button onclick="exportImage()">Export Image</button>
