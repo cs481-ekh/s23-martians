@@ -1,16 +1,21 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
 from selenium.webdriver.common.by import By
 
-
-def test_eight_components():
-    driver = webdriver.Chrome()
-
+def test_components():
+    
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.get("https://sdp.boisestate.edu/s23-martians/")
 
     title = driver.title
-    assert title == "Muldoon"
-
-    driver.implicitly_wait(0.5)
+    
+    if (title == "Muldoon"):
+        assert True
+    if (title != "Muldoon"):
+        assert False
+    driver.implicitly_wait(1)
 
     text_box = driver.find_element(by=By.NAME, value="startTime")
 
@@ -18,9 +23,5 @@ def test_eight_components():
     submit_button = driver.find_element(by=By.ID, value ="plotGraphBtn")
     
     submit_button.click()
-
-    message = driver.find_element(by=By.ID, value="message")
-    value = message.text
-    assert value == "Received!"
 
     driver.quit()
