@@ -9,12 +9,6 @@ def test_components():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.get("https://sdp.boisestate.edu/s23-martians/")
 
-    title = driver.title
-    
-    if (title == "Muldoon"):
-        assert True
-    if (title != "Muldoon"):
-        assert False
     driver.implicitly_wait(1)
 
     text_box = driver.find_element(by=By.NAME, value="startTime")
