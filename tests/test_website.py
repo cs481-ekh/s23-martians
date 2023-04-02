@@ -7,23 +7,24 @@ from selenium.webdriver.common.by import By
 
 def test_title():
    try:
-        service = ChromeService(executable_path=ChromeDriverManager().install())
+      service = ChromeService(executable_path=ChromeDriverManager().install())
     
-        driver = webdriver.Chrome(service=service)
+      driver = webdriver.Chrome(service=service)
     
         
-        driver.get("https://sdp.boisestate.edu/s23-martians/")
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
     
-        driver.implicitly_wait(1)
-        try:
-            if(driver.find_element_by_css_selector("titleBar")):
-                assert True
-        except: 
-                assert False
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by_css_selector("titleBar")):
+            assert True
+      except: 
+            assert False
+      driver.quit()
 
-        driver.quit()
-    except:
-        print("error")
+   except:
+      print("error")
+
 
 def test_textBox():
      try:
