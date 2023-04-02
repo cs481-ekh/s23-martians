@@ -23,10 +23,10 @@ def test_title():
 
         driver.quit()
     except:
-         print("error")
+        print("error")
 
 def test_textBox():
-    try:
+     try:
         service = ChromeService(executable_path=ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service)
 
@@ -41,8 +41,8 @@ def test_textBox():
 
         driver.quit()
     except:
-         print("error")
-         
+        print("error")
+
 def test_textBox():
     try:
         service = ChromeService(executable_path=ChromeDriverManager().install())
@@ -59,4 +59,4 @@ def test_textBox():
 
         driver.quit()
     except:
-         print("error")
+        print("error")
