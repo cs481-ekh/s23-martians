@@ -27,37 +27,37 @@ def test_title():
 
 
 def test_textBox():
-     try:
-        service = ChromeService(executable_path=ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service)
+   try:
+      service = ChromeService(executable_path=ChromeDriverManager().install())
+      driver = webdriver.Chrome(service=service)
 
-        driver.get("https://sdp.boisestate.edu/s23-martians/")
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
     
-        driver.implicitly_wait(1)
-        try:
-            if(driver.find_element(by=By.NAME, value="startTime")):
-                assert True
-        except: 
-                assert False
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.NAME, value="startTime")):
+            assert True
+      except: 
+            assert False
 
-        driver.quit()
-    except:
-        print("error")
+      driver.quit()
+   except:
+      print("error")
 
-def test_textBox():
-    try:
-        service = ChromeService(executable_path=ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service)
+def test_plotButton():
+   try:
+      service = ChromeService(executable_path=ChromeDriverManager().install())
+      driver = webdriver.Chrome(service=service)
 
-        driver.get("https://sdp.boisestate.edu/s23-martians/")
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
     
-        driver.implicitly_wait(1)
-        try:
-            if(driver.find_element(by=By.NAME, value="plotGraphBtn")):
-                assert True
-        except: 
-                assert False
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.NAME, value="plotGraphBtn")):
+            assert True
+      except: 
+            assert False
 
-        driver.quit()
-    except:
-        print("error")
+      driver.quit()
+   except:
+      print("error")
