@@ -19,6 +19,7 @@ const sensor = document.getElementById('sensor');
 const plotGraphBtn = document.getElementById('plotGraphBtn');
 const myChart = document.getElementById('graph');
 const exportUrlBtn = document.getElementById('exportUrlBtn');
+const downloadCsvBtn = document.getElementById('downloadCsvBtn');
 const urlDisplay = document.getElementById('urlDisplay');
 const medaFileList = [];
 
