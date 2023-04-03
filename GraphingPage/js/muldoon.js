@@ -18,6 +18,8 @@ const endTime = document.getElementById('endTime');
 const sensor = document.getElementById('sensor');
 const plotGraphBtn = document.getElementById('plotGraphBtn');
 const myChart = document.getElementById('graph');
+const exportUrlBtn = document.getElementById('exportUrlBtn');
+const urlDisplay = document.getElementById('urlDisplay');
 const medaFileList = [];
 
 document.addEventListener("DOMContentLoaded", () => {
