@@ -1,3 +1,5 @@
+let shouldImport = (window.location.search != "");
+
 const plotGraph = function () {
   let sensorName = sensor.options[sensor.selectedIndex].text;
   let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
@@ -43,6 +45,15 @@ const plotGraph = function () {
         }
       }
     };
+
+    if(shouldImport) {
+      let params = new URLSearchParams(window.location.search);
+      layout.xaxis.range = [params.get('x1'), params.get('x2')];
+      layout.yaxis.range = [params.get('y1'), params.get('y2')];
+      layout.xaxis.automargin = false;
+      layout.yaxis.autorange = false;
+      shouldImport = false;
+    }
 
     var config = {
       displayModeBar: true,
@@ -99,10 +110,10 @@ const exportURL = function() {
     urlBuilder.set('t1', startTime.value);
     urlBuilder.set('t2', endTime.value);
     urlBuilder.set('s', sensor.selectedIndex)
-    urlBuilder.set('x1', myChart.layout.xaxis.range[0].toFixed(2));
-    urlBuilder.set('x2', myChart.layout.xaxis.range[1].toFixed(2));
-    urlBuilder.set('y1', myChart.layout.yaxis.range[0].toFixed(2));
-    urlBuilder.set('y2', myChart.layout.yaxis.range[1].toFixed(2));
+    urlBuilder.set('x1', myChart.layout.xaxis.range[0]);
+    urlBuilder.set('x2', myChart.layout.xaxis.range[1]);
+    urlBuilder.set('y1', myChart.layout.yaxis.range[0]);
+    urlBuilder.set('y2', myChart.layout.yaxis.range[1]);
     let url = window.location.origin + window.location.pathname + '?' + urlBuilder.toString();
     urlDisplay.href = url;
     urlDisplay.innerHTML = url;
@@ -110,3 +121,14 @@ const exportURL = function() {
 }
 
 exportUrlBtn.addEventListener('click', exportURL, false);
+
+if(shouldImport) {
+  let params = new URLSearchParams(window.location.search);
+  sol.value = params.get('sol');
+  startTime.value = params.get('t1');
+  endTime.value = params.get('t2');
+  sensor.selectedIndex = params.get('s');
+  setTimeout(() => {
+    plotGraphBtn.click();
+  }, 500);
+}
