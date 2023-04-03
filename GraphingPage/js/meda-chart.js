@@ -91,3 +91,22 @@ function convertToSeconds(str) {
 }
 
 plotGraphBtn.addEventListener('click', plotGraph, false);
+
+const exportURL = function() {
+  if(myChart.classList.contains('js-plotly-plot')){
+    let urlBuilder = new URLSearchParams();
+    urlBuilder.set('sol', sol.value);
+    urlBuilder.set('t1', startTime.value);
+    urlBuilder.set('t2', endTime.value);
+    urlBuilder.set('s', sensor.selectedIndex)
+    urlBuilder.set('x1', myChart.layout.xaxis.range[0].toFixed(2));
+    urlBuilder.set('x2', myChart.layout.xaxis.range[1].toFixed(2));
+    urlBuilder.set('y1', myChart.layout.yaxis.range[0].toFixed(2));
+    urlBuilder.set('y2', myChart.layout.yaxis.range[1].toFixed(2));
+    let url = window.location.origin + window.location.pathname + '?' + urlBuilder.toString();
+    urlDisplay.href = url;
+    urlDisplay.innerHTML = url;
+  }
+}
+
+exportUrlBtn.addEventListener('click', exportURL, false);
