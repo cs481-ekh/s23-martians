@@ -16,8 +16,7 @@ const startTime = document.getElementById('startTime');
 const endTime = document.getElementById('endTime');
 const sensor = document.getElementById('sensor');
 const generatePlotBtn = document.getElementById('generatePlotBtn');
-const myChart = document.getElementById('myChart');
-const myPlot = document.getElementById('myPlot');
+const myPlot = document.getElementById('graph');
 const medaFileList = [];
 
 document.addEventListener("DOMContentLoaded", () => {
