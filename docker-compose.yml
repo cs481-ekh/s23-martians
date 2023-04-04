@@ -9,7 +9,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:Z
       - ./nginx/server.conf:/etc/nginx/conf.d/server.conf:Z
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:Z
-      - ./GraphingPage/:/usr/share/nginx/html:Z
+      - ./muldoon-webapp/:/usr/share/nginx/html:Z
 
     ports:
       - "${HOST_PORT:-8100}:80"

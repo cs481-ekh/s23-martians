@@ -129,3 +129,30 @@ dmypy.json
 .pyre/
 
 *.swp
+
+# OSX
+.DS_Store
+
+# Android/IntelliJ
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+
+# node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Bundle artifacts
+*.jsbundle
+
+# Expo
+.expo/
+web-build/
+dist/
+
+# VSCode
+.vscode
