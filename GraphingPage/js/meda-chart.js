@@ -15,6 +15,8 @@ const plotGraph = function () {
   let filename = medaRef.filename;
   let rawDataURL = "https://sdp.boisestate.edu/pds/data/PDS4/Mars2020/mars2020_meda/" + collection + "/" + parent + "/" + directory + "/" + filename;
 
+  downloadCsvBtn.onclick = function(){ window.open(rawDataURL); };
+
   myChart.innerHTML = "<div class='loading-container'><div class='loading'></div>Processing Perseverance MEDA</div>";
 
   // Load MEDA data and generate a Plotly datavis.
@@ -102,6 +104,12 @@ function convertToSeconds(str) {
 }
 
 plotGraphBtn.addEventListener('click', plotGraph, false);
+
+const downloadCsv = function(url) {
+  let element = document.createElement('a');
+  element.href = url;
+  element.click();
+}
 
 const exportURL = function() {
   if(myChart.classList.contains('js-plotly-plot')){
