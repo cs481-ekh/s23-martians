@@ -9,7 +9,7 @@
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
-  --bs-pink: #d122e3;
+  --bs-pink: #d63384;
   --bs-red: #dc3545;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
@@ -70,7 +70,7 @@
   --bs-border-radius-pill: 50rem;
   --bs-link-color: #5e644a;
   --bs-link-hover-color: #4b503b;
-  --bs-code-color: #d122e3;
+  --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
 
@@ -10780,9 +10780,60 @@ textarea.form-control-lg {
   text-transform: capitalize;
   font-weight: 600;
 }
+.menu a:hover {
+  color: peru;
+}
 
 .user-input {
-  background: #adb5bd;
+  background: #dee0a8;
+}
+.user-input label {
+  color: #5e644a;
+}
+.user-input .sol-help {
+  color: #9b0000;
+}
+.user-input button {
+  background-color: #4682b4;
+}
+.user-input button:hover {
+  background-color: #4682b4;
+  filter: brightness(0.9);
+}
+
+.plot {
+  /* Safari */
+}
+.plot .loading-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.plot .loading {
+  border: 8px solid #ccc;
+  border-radius: 50%;
+  border-top: 8px solid #1e90ff;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -135,12 +135,12 @@ function getParentDir(num) {
 
 function setYField(str) {
   switch (str) {
+    case "ATS":
+      return ["ATS_LOCAL_TEMP1", "ATS_LOCAL_TEMP2", "ATS_LOCAL_TEMP3", "ATS_LOCAL_TEMP4", "ATS_LOCAL_TEMP5"];
     case "PS":
       return ["PRESSURE"];
     case "WS":
       return ["HORIZONTAL_WIND_SPEED", "WIND_SPEED_DIRECTION"];
-    case "ATS":
-      return ["ATS_LOCAL_TEMP1", "ATS_LOCAL_TEMP2", "ATS_LOCAL_TEMP3", "ATS_LOCAL_TEMP4", "ATS_LOCAL_TEMP5"];
     default:
       return;
   }

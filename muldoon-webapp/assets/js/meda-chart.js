@@ -1,6 +1,4 @@
 const generatePlot = function () {
-  console.log("begin generatePlot()");
-
   let sensorName = sensor.options[sensor.selectedIndex].text;
   let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
 
@@ -17,12 +15,8 @@ const generatePlot = function () {
 
   myPlot.innerHTML = "<div class='loading-container'><div class='loading'></div>Processing Perseverance MEDA</div>";
 
-  console.log("d3.csv(): " + rawDataURL);
-
   // Load MEDA data and generate a Plotly datavis.
   d3.csv(rawDataURL).then(function (rawData) {
-    console.log("d3.csv().then()");
-
     var xField = medaRef.xField;
     var yField = medaRef.yField[0];
 
@@ -59,22 +53,16 @@ const generatePlot = function () {
 
     myPlot.innerHTML = "";
 
-    console.log("Plotly.newPlot()");
-
     Plotly.newPlot(myPlot, data, layout, config);
   });
 }
 
 function prepData(rawData, xField, yField) {
-  console.log("prepData()");
-
   var x = [];
   var y = [];
 
   var startBoundary = convertToSeconds(startTime.value + ":00");
   var endBoundary = convertToSeconds(endTime.value + ":59");
-
-  console.log("rawData.forEach()");
 
   rawData.forEach(function (datum, i) {
     let ts = (datum[xField].match(/\d{2}:\d{2}:\d{2}/))[0];
@@ -98,8 +86,6 @@ function prepData(rawData, xField, yField) {
 }
 
 function convertToSeconds(str) {
-  console.log("convertToSeconds()");
-
   let data = str.split(':').map(Number);
 
   return (data[0] * 3600) + (data[1] * 60) + data[2];
