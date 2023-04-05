@@ -3,7 +3,11 @@ const generatePlot = function () {
   let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
 
   if (medaRef === undefined) {
-    myPlot.innerHTML = "Perseverance MEDA data not found for Sol " + sol.value + " " + sensorName + " sensor.";
+    let title = "Data not found";
+    let msg = "Perseverance MEDA data is not available for Sol " + sol.value + " " + sensorName + " sensor.";
+
+    displayModal(title, msg);
+
     return;
   }
   
@@ -89,6 +93,13 @@ function convertToSeconds(str) {
   let data = str.split(':').map(Number);
 
   return (data[0] * 3600) + (data[1] * 60) + data[2];
+}
+    
+function displayModal(t, m) {
+    myModalTitle.innerHTML = t;
+    myModalMsg.innerHTML = m;
+
+    myModal.toggle();
 }
 
 generatePlotBtn.addEventListener('click', generatePlot, false);

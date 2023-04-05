@@ -17,6 +17,9 @@ const endTime = document.getElementById('endTime');
 const sensor = document.getElementById('sensor');
 const generatePlotBtn = document.getElementById('generatePlotBtn');
 const myPlot = document.getElementById('graph');
+const myModal = new bootstrap.Modal(document.getElementById('plotModal'));
+const myModalTitle = document.getElementById('plotModalTitle');
+const myModalMsg = document.getElementById('plotModalMsg');
 const medaFileList = [];
 
 document.addEventListener("DOMContentLoaded", () => {

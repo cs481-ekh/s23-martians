@@ -10835,5 +10835,14 @@ textarea.form-control-lg {
     transform: rotate(360deg);
   }
 }
+.plot .modal-header {
+  padding: 0.8rem;
+  background: #4682b4;
+  color: #e9ecef;
+}
+.plot .modal-footer {
+  border: 0;
+  padding: 0.5rem;
+}
 
 /*# sourceMappingURL=style.css.map */

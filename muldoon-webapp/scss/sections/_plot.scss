@@ -1,13 +1,13 @@
 @use '../custom' as *;
 
 .plot {
-    .loading-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+  .loading-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    .loading {
+  .loading {
     border: 8px solid #ccc;
     border-radius: 50%;
     border-top: 8px solid #1e90ff;;
@@ -16,16 +16,27 @@
     margin-right: 10px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
-    }
+  }
 
-    /* Safari */
-    @-webkit-keyframes spin {
+  /* Safari */
+  @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
-    }
+  }
 
-    @keyframes spin {
+  @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-    }
+  }
+
+  .modal-header {
+    padding: 0.8rem;
+    background: $steelblue;
+    color: $gray-200;
+  }
+
+  .modal-footer {
+    border: 0;
+    padding: 0.5rem;
+  }
 }
