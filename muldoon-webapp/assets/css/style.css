@@ -10813,8 +10813,8 @@ textarea.form-control-lg {
   border: 8px solid #ccc;
   border-radius: 50%;
   border-top: 8px solid #1e90ff;
-  width: 16px;
-  height: 16px;
+  width: 2rem;
+  height: 2rem;
   margin-right: 10px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;

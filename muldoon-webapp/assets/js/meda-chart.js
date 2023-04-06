@@ -24,18 +24,36 @@ const generatePlot = function () {
     var xField = medaRef.xField;
     var yField = medaRef.yField[0];
 
-    var plotTitle = "Perseverance MEDA Data: " + sensorName + " for Sol " + sol.value + ", " + startTime.value + " to " + endTime.value;
+    var plotTitle = sensorName + " for Sol " + sol.value + ", " + startTime.value + " to " + endTime.value;
     var data = prepData(rawData, xField, yField);
 
     var layout = {
-      showlegend: true,
-      title: plotTitle,
+      hoverlabel: {
+        bgcolor: '#ffffff',
+        font: {
+          size: 14
+        }
+      },
+      width: 1400,
+      //showlegend: true,
+      title: {
+        text: plotTitle,
+        font: {
+          weight: 'bold',
+          size: 36
+        }
+      },
       xaxis: {
         automargin: true,
-        tickangle: 45,
         title: {
           text: xField,
-          standoff: 16
+          standoff: 12,
+          font: {
+            size: 24
+          }
+        },
+        tickfont: {
+          size: 14
         }
       },
       yaxis: {
@@ -43,7 +61,12 @@ const generatePlot = function () {
         rangemode: "normal",
         title: {
           text: yField,
-          standoff: 16
+          font: {
+            size: 24
+          }
+        },
+        tickfont: {
+          size: 14
         }
       }
     };
@@ -52,7 +75,8 @@ const generatePlot = function () {
       displayModeBar: true,
       displaylogo: false,
       //downloadImageFilename: ???,
-      modeBarButtonsToRemove: ['autoScale2d', 'lasso2d', 'select2d']
+      modeBarButtonsToRemove: ['autoScale2d', 'lasso2d', 'select2d'],
+      responsive: true
     };
 
     myPlot.innerHTML = "";
@@ -74,18 +98,20 @@ function prepData(rawData, xField, yField) {
 
     if ((seconds >= startBoundary) && (seconds <= endBoundary)) {
       if (!isNaN(datum[yField]) && !isNaN(parseFloat(datum[yField])) && (datum[yField] < 9999999)) {
-        x.push(datum[xField]);
+        x.push(ts);
         y.push(datum[yField]);
       }
     }
   });
 
   return [{
-    name: yField,
+    name: "",
     type: 'scatter',
     mode: 'lines+markers',
     x: x,
     y: y,
+    hovertemplate: '%{yaxis.title.text}: %{y}<br>' +
+                   '%{xaxis.title.text}: %{x}'
   }];
 }
 
