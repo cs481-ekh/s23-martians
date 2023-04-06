@@ -1,0 +1,22 @@
+@use '../custom' as *;
+
+.user-input {
+  background: $secondary;
+
+  label {
+    color: $primary;
+  }
+
+  .sol-help {
+    color: $darkred;
+  }
+
+  button {
+    background-color: $steelblue;
+  }
+  
+  button:hover {
+    background-color: $steelblue;
+    filter: brightness(0.9);
+  }
+}
