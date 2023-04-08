@@ -1,10 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.firefox.options import Options
 
 
 from selenium.webdriver.common.by import By
 
+# Testing for Chrome Browser
 def test_title():
    try:
       service = ChromeService(executable_path=ChromeDriverManager().install())
@@ -16,7 +18,7 @@ def test_title():
     
       driver.implicitly_wait(1)
       try:
-         if(driver.find_element_by_css_selector("titleBar")):
+         if(driver.find_element_by(by=By.Name, value = "titleBar")):
             assert True
       except: 
             assert False
@@ -59,5 +61,26 @@ def test_plotButton():
             assert False
 
       driver.quit()
+   except:
+      print("error")
+
+# Testing for Firefox Browser
+def test_title():
+   try:
+      options = Options()
+      
+      driver = webdriver.Firefox(options=options)
+    
+        
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.Name, value = "titleBar")):
+            assert True
+      except: 
+            assert False
+      driver.quit()
+
    except:
       print("error")
