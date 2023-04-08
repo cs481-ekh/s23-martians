@@ -10,10 +10,8 @@ from selenium.webdriver.common.by import By
 def test_title():
    try:
       service = ChromeService(executable_path=ChromeDriverManager().install())
-    
       driver = webdriver.Chrome(service=service)
-    
-        
+
       driver.get("https://sdp.boisestate.edu/s23-martians/")
     
       driver.implicitly_wait(1)
@@ -55,7 +53,25 @@ def test_plotButton():
     
       driver.implicitly_wait(1)
       try:
-         if(driver.find_element(by=By.NAME, value="plotGraphBtn")):
+         if(driver.find_element(by=By.NAME, value="generatePlotBtn")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("error")
+
+def test_sensorDropDown():
+   try:
+      service = ChromeService(executable_path=ChromeDriverManager().install())
+      driver = webdriver.Chrome(service=service)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.NAME, value="sensor")):
             assert True
       except: 
             assert False
@@ -68,10 +84,8 @@ def test_plotButton():
 def test_title():
    try:
       options = Options()
-      
       driver = webdriver.Firefox(options=options)
-    
-        
+
       driver.get("https://sdp.boisestate.edu/s23-martians/")
     
       driver.implicitly_wait(1)
@@ -82,5 +96,59 @@ def test_title():
             assert False
       driver.quit()
 
+   except:
+      print("error")
+
+def test_textBox():
+   try:
+      options = Options()
+      driver = webdriver.Firefox(options=options)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.NAME, value="startTime")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("error")
+
+def test_plotButton():
+   try:
+      options = Options()
+      driver = webdriver.Firefox(options=options)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.NAME, value="generatePlotBtn")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("error")
+
+def test_sensorDropDown():
+   try:
+      options = Options()
+      driver = webdriver.Firefox(options=options)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element(by=By.NAME, value="sensor")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
    except:
       print("error")
