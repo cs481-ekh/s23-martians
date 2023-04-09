@@ -7,7 +7,8 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 
 # Testing for Chrome Browser
-def test_title():
+
+def test_titleChrome():
    try:
       service = ChromeService(executable_path=ChromeDriverManager().install())
       driver = webdriver.Chrome(service=service)
@@ -23,10 +24,10 @@ def test_title():
       driver.quit()
 
    except:
-      print("error")
+      print("Error")
 
 
-def test_textBox():
+def test_textBoxChrome():
    try:
       service = ChromeService(executable_path=ChromeDriverManager().install())
       driver = webdriver.Chrome(service=service)
@@ -42,9 +43,9 @@ def test_textBox():
 
       driver.quit()
    except:
-      print("error")
+      print("Error")
 
-def test_plotButton():
+def test_plotButtonChrome():
    try:
       service = ChromeService(executable_path=ChromeDriverManager().install())
       driver = webdriver.Chrome(service=service)
@@ -60,9 +61,9 @@ def test_plotButton():
 
       driver.quit()
    except:
-      print("error")
+      print("Error")
 
-def test_sensorDropDown():
+def test_sensorDropDownChrome():
    try:
       service = ChromeService(executable_path=ChromeDriverManager().install())
       driver = webdriver.Chrome(service=service)
@@ -78,10 +79,29 @@ def test_sensorDropDown():
 
       driver.quit()
    except:
-      print("error")
+      print("Error")
+
+def test_linkToMEDAChrome():
+   try:
+      service = ChromeService(executable_path=ChromeDriverManager().install())
+      driver = webdriver.Chrome(service=service)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by_link_text("Mars 2020 PDS")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("Error")
 
 # Testing for Firefox Browser
-def test_title():
+
+def test_titleFirefox():
    try:
       options = Options()
       driver = webdriver.Firefox(options=options)
@@ -97,9 +117,9 @@ def test_title():
       driver.quit()
 
    except:
-      print("error")
+      print("Error")
 
-def test_textBox():
+def test_textBoxFirefox():
    try:
       options = Options()
       driver = webdriver.Firefox(options=options)
@@ -115,9 +135,9 @@ def test_textBox():
 
       driver.quit()
    except:
-      print("error")
+      print("Error")
 
-def test_plotButton():
+def test_plotButtonFirefox():
    try:
       options = Options()
       driver = webdriver.Firefox(options=options)
@@ -133,9 +153,9 @@ def test_plotButton():
 
       driver.quit()
    except:
-      print("error")
+      print("Error")
 
-def test_sensorDropDown():
+def test_sensorDropDownFirefox():
    try:
       options = Options()
       driver = webdriver.Firefox(options=options)
@@ -151,4 +171,22 @@ def test_sensorDropDown():
 
       driver.quit()
    except:
-      print("error")
+      print("Error")
+
+def test_linkToMEDAFirefox():
+   try:
+      options = Options()
+      driver = webdriver.Firefox(options=options)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by_link_text("Mars 2020 PDS")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("Error")
