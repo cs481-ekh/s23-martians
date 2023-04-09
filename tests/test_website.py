@@ -99,6 +99,24 @@ def test_linkToMEDAChrome():
    except:
       print("Error")
 
+def test_linkToAstrojackChrome():
+   try:
+      service = ChromeService(executable_path=ChromeDriverManager().install())
+      driver = webdriver.Chrome(service=service)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by_link_text("Astrojack")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("Error")     
+
 # Testing for Firefox Browser
 
 def test_titleFirefox():
@@ -183,6 +201,24 @@ def test_linkToMEDAFirefox():
       driver.implicitly_wait(1)
       try:
          if(driver.find_element_by_link_text("Mars 2020 PDS")):
+            assert True
+      except: 
+            assert False
+
+      driver.quit()
+   except:
+      print("Error")
+
+def test_linkToAstrojackFirefox():
+   try:
+      options = Options()
+      driver = webdriver.Firefox(options=options)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by_link_text("Astrojack")):
             assert True
       except: 
             assert False
