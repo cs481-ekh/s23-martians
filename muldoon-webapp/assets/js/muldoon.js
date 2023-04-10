@@ -14,12 +14,14 @@ const solHelp = document.getElementById('solHelp');
 const sol = document.getElementById('sol');
 const startTime = document.getElementById('startTime');
 const endTime = document.getElementById('endTime');
-const sensor = document.getElementById('sensor');
+const exportDataBtn = document.getElementById('exportDataBtn');
 const generatePlotBtn = document.getElementById('generatePlotBtn');
 const myPlot = document.getElementById('graph');
 const myModal = new bootstrap.Modal(document.getElementById('plotModal'));
 const myModalTitle = document.getElementById('plotModalTitle');
 const myModalMsg = document.getElementById('plotModalMsg');
+const sensor = document.getElementById('sensor');
+const shareURLBtn = document.getElementById('shareURLBtn');
 const medaFileList = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -114,6 +116,19 @@ document.addEventListener("DOMContentLoaded", () => {
       solHelp.hidden = false;
     }
   });
+
+  if (window.location.search !== "") {
+    let params = new URLSearchParams(window.location.search);
+
+    sol.value = params.get('sol');
+    startTime.value = params.get('start');
+    endTime.value = params.get('end');
+    sensor.selectedIndex = params.get('sensor');
+
+    setTimeout(() => {
+      generatePlotBtn.click();
+    }, 500);
+  }
 });
 
 function getParentDir(num) {

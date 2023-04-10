@@ -1,9 +1,11 @@
 @use '../custom' as *;
 
 .user-input {
+  color: $primary;
   background: $secondary;
 
-  label {
+  .form-control,
+  .form-select {
     color: $primary;
   }
 
@@ -11,12 +13,23 @@
     color: $darkred;
   }
 
-  button {
+  .btn-primary {
+    color: $gray-200;
+    border-color: $gray-600;
     background-color: $steelblue;
   }
   
-  button:hover {
+  .btn-primary:hover {
+    color: $gray-200;
+    border-color: $gray-600;
     background-color: $steelblue;
     filter: brightness(0.9);
+  }
+
+  .btn-primary:active {
+    color: $gray-200;
+    border-color: $gray-600;
+    background-color: $steelblue;
+    filter: brightness(0.7);
   }
 }

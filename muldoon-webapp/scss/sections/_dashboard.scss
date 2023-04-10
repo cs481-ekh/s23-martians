@@ -1,0 +1,25 @@
+@use '../custom' as *;
+
+.dashboard {
+  color: $steelblue;
+
+  .btn-secondary {
+    color: $primary;
+    border-color: $primary;
+    background-color: $secondary;
+  }
+  
+  .btn-secondary:hover {
+    color: $primary;
+    border-color: $primary;
+    background-color: $secondary;
+    filter: brightness(0.9);
+  }
+
+  .btn-secondary:active {
+    color: $primary;
+    border-color: $primary;
+    background-color: $secondary;
+    filter: brightness(0.7);
+  }
+}
