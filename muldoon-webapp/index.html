@@ -75,11 +75,20 @@
       
         <!-- begin plot display section -->
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom dashboard">
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mx-3 mb-2 mb-md-0">
+              <div class="btn-group me-2">
+                <button id="shareURLBtn" type="button" role="button" class="btn btn-sm btn-secondary" disabled>Share URL</button>
+                <button id="exportDataBtn" type="button" role="button" class="btn btn-sm btn-secondary" disabled>Export Data</button>
+              </div>
+              <a id="urlDisplay"></a>
+            </div>
+          </div>
 
           <!-- MEDA data plot -->
           <div class="my-4 w-100 plot" id="graph" width="900" height="380">
           </div>
-
         </div>
         <!-- end plot display section -->
       <!-- end dashboard -->

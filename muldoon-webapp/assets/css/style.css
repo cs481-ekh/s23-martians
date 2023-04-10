@@ -10785,20 +10785,32 @@ textarea.form-control-lg {
 }
 
 .user-input {
+  color: #5e644a;
   background: #dee0a8;
 }
-.user-input label {
+.user-input .form-control,
+.user-input .form-select {
   color: #5e644a;
 }
 .user-input .sol-help {
   color: #9b0000;
 }
-.user-input button {
+.user-input .btn-primary {
+  color: #e9ecef;
+  border-color: #6c757d;
   background-color: #4682b4;
 }
-.user-input button:hover {
+.user-input .btn-primary:hover {
+  color: #e9ecef;
+  border-color: #6c757d;
   background-color: #4682b4;
   filter: brightness(0.9);
+}
+.user-input .btn-primary:active {
+  color: #e9ecef;
+  border-color: #6c757d;
+  background-color: #4682b4;
+  filter: brightness(0.7);
 }
 
 .plot {
@@ -10843,6 +10855,27 @@ textarea.form-control-lg {
 .plot .modal-footer {
   border: 0;
   padding: 0.5rem;
+}
+
+.dashboard {
+  color: #4682b4;
+}
+.dashboard .btn-secondary {
+  color: #5e644a;
+  border-color: #5e644a;
+  background-color: #dee0a8;
+}
+.dashboard .btn-secondary:hover {
+  color: #5e644a;
+  border-color: #5e644a;
+  background-color: #dee0a8;
+  filter: brightness(0.9);
+}
+.dashboard .btn-secondary:active {
+  color: #5e644a;
+  border-color: #5e644a;
+  background-color: #dee0a8;
+  filter: brightness(0.7);
 }
 
 /*# sourceMappingURL=style.css.map */
