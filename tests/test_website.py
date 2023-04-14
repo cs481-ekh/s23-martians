@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.edge.service import Service
+
 
 
 from selenium.webdriver.common.by import By
@@ -223,6 +225,26 @@ def test_linkToAstrojackFirefox():
       except: 
             assert False
 
+      driver.quit()
+   except:
+      print("Error")
+
+# Testing for Edge Browser
+
+def test_titleEdge():
+   try:
+      service = Service(verbose = True)
+      driver = webdriver.Edge(service=service)
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by(by=By.Name, value = "titleBar")):
+            assert True
+      except: 
+            assert False
+            
       driver.quit()
    except:
       print("Error")
