@@ -53,11 +53,20 @@
               <input type="time" class="form-control form-control-sm" id="endTime" value="23:59">
             </div>
             <div class="mb-3">
+              <label for="processLevel" class="form-label">Process Level</label>
+              <select class="form-select" id="processLevel"></select>
+            </div>
+            <div class="mb-3">
               <label for="sensor" class="form-label">Sensor ID</label>
               <select class="form-select" id="sensor">
                   <option value="ATS">Atmosphere (ATS)</option>
                   <option value="PS" selected>Pressure (PS)</option>
                   <option value="WS">Wind (WS)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="sensorAttr" class="form-label">Sensor Attribute</label>
+              <select class="form-select" id="sensorAttr">
               </select>
             </div>
             <div class="mb-3">

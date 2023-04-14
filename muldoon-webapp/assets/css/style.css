@@ -10787,9 +10787,11 @@ textarea.form-control-lg {
 .user-input {
   color: #5e644a;
   background: #dee0a8;
+  font-size: 0.9rem;
 }
 .user-input .form-control,
 .user-input .form-select {
+  font-size: 0.8rem;
   color: #5e644a;
 }
 .user-input .sol-help {
