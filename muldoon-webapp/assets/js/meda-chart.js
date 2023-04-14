@@ -41,15 +41,6 @@ const generatePlot = function () {
       yUnits = `(${yUnits})`;
     }
 
-    //var yUnits = medaDataConfig.filter(function (d) {
-    //  if ((d.Product_Type === processLevel.value) &&
-    //      (d.Product_Subtype === sensor.value) &&
-    //      (d.Attr === sensorAttr.value)
-    //  ) {
-    //    return `(${d.Unit})`;
-    //  }
-    //});
-
     var plotTitle = sensorName + "<br><sup>Sol " + sol.value + " - " + startTime.value + " to " + endTime.value + "</sup>";
     var data = prepData(rawData, xField, yField);
 
@@ -60,9 +51,8 @@ const generatePlot = function () {
           size: 14
         }
       },
-      height: 750,
+      height: 725,
       width: 1400,
-      //showlegend: true,
       title: {
         text: plotTitle,
         font: {
@@ -98,12 +88,14 @@ const generatePlot = function () {
       }
     };
 
-    let savePNGFilename = "sol_" + sol.value + "_" + (Date.now()/1000);
+    let ts = getTimestamp();
+    let savePNGFilename = `Sol-${sol.value}-${processLevel.value}-${sensor.value}-${yField}-${ts}`;
 
     if (plotChartFromURL) {
       let params = new URLSearchParams(window.location.search);
       layout.xaxis.range = [params.get('x1'), params.get('x2')];
       layout.yaxis.range = [params.get('y1'), params.get('y2')];
+      layout.yaxis.autorange = false;
 
       plotChartFromURL = false;
     }
@@ -169,6 +161,19 @@ function convertToSeconds(str) {
   return (data[0] * 3600) + (data[1] * 60) + data[2];
 }
     
+function getTimestamp() {
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = ("0" + (d.getMonth() + 1)).slice(-2);
+    let day = ("0" + d.getDate()).slice(-2);
+    let hours = ("0" + d.getHours()).slice(-2);
+    let mins = ("0" + d.getMinutes()).slice(-2);
+    let secs = ("0" + d.getSeconds()).slice(-2);
+    let ts = `${year}${month}${day}${hours}${mins}${secs}`;
+
+    return ts;
+}
+    
 function displayModal(t, m) {
     myModalTitle.innerHTML = t;
     myModalMsg.innerHTML = m;
@@ -183,11 +188,13 @@ function shareURL() {
     urlBuilder.set('sol', sol.value);
     urlBuilder.set('start', startTime.value);
     urlBuilder.set('end', endTime.value);
+    urlBuilder.set('processLevel', processLevel.selectedIndex);
     urlBuilder.set('sensor', sensor.selectedIndex);
+    urlBuilder.set('sensorAttr', sensorAttr.selectedIndex);
     urlBuilder.set('x1', myPlot.layout.xaxis.range[0]);
     urlBuilder.set('x2', myPlot.layout.xaxis.range[1]);
-    urlBuilder.set('y1', myPlot.layout.xaxis.range[0]);
-    urlBuilder.set('y2', myPlot.layout.xaxis.range[1]);
+    urlBuilder.set('y1', myPlot.layout.yaxis.range[0]);
+    urlBuilder.set('y2', myPlot.layout.yaxis.range[1]);
 
     let url = window.location.origin + window.location.pathname + '?' + urlBuilder.toString();
 

@@ -1,3 +1,5 @@
+let urlParams = (window.location.search !== "");
+
 //--------------------------------------------------------------
 // Mars Sol length: 24h 39m 35.244s
 // Perseverance (rover) landed 2021-02-18 20:55 UTC
@@ -43,7 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     d3.csvParse(data, (d, i) => {
       medaDataConfig.push(d);
     });
-    
+
+    if (urlParams) {
+      let params = new URLSearchParams(window.location.search);
+
+      sol.value = params.get('sol');
+      startTime.value = params.get('start');
+      endTime.value = params.get('end');
+    }
+
     populateProcessLevelList();
   });
 
@@ -134,21 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
       solHelp.hidden = false;
     }
   });
-
-  if (window.location.search !== "") {
-    let params = new URLSearchParams(window.location.search);
-
-    sol.value = params.get('sol');
-    startTime.value = params.get('start');
-    endTime.value = params.get('end');
-    processLevel.selectedIndex = params.get('processLevel');
-    sensor.selectedIndex = params.get('sensor');
-    sensorAttr.selectedIndex = params.get('sensorAttr');
-
-    setTimeout(() => {
-      generatePlotBtn.click();
-    }, 500);
-  }
+    
 });
 
 function getParentDir(num) {
@@ -200,6 +196,11 @@ const populateProcessLevelList = function() {
   processLevel.innerHTML = htmlOptions.join("");
   processLevel.selectedIndex = 0;
 
+  if (urlParams) {
+    let params = new URLSearchParams(window.location.search);
+    processLevel.selectedIndex = params.get('processLevel');
+  }
+
   populateSensorList();
 }
 
@@ -231,6 +232,11 @@ const populateSensorList = function() {
 
   sensor.innerHTML = htmlOptions.join("");
   sensor.selectedIndex = 0;
+
+  if (urlParams) {
+    let params = new URLSearchParams(window.location.search);
+    sensor.selectedIndex = params.get('sensor');
+  }
 
   populateSensorAttrList();
 }
@@ -268,6 +274,17 @@ const populateSensorAttrList = function() {
   sensorAttr.innerHTML = htmlOptions.join("");
   sensorAttr.selectedIndex = 0;
   generatePlotBtn.disabled = false;
+
+  if (urlParams) {
+    let params = new URLSearchParams(window.location.search);
+    sensorAttr.selectedIndex = params.get('sensorAttr');
+
+    setTimeout(() => {
+      generatePlotBtn.click();
+    }, 500);
+
+    urlParams = false;
+  }
 }
 
 processLevel.addEventListener('change', populateSensorList, false);
