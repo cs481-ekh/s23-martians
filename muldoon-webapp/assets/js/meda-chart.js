@@ -26,8 +26,8 @@ const generatePlot = function () {
 
   // Load MEDA data and generate a Plotly datavis.
   d3.csv(rawDataURL).then(function (rawData) {
-    var xField = medaRef.xField;
-    var yField = medaRef.yField[0];
+    var xField = 'LMST';
+    var yField = sensorAttr.value;
 
     var plotTitle = sensorName + "<br><sup>Sol " + sol.value + " - " + startTime.value + " to " + endTime.value + "</sup>";
     var data = prepData(rawData, xField, yField);

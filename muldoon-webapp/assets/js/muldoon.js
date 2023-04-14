@@ -10,21 +10,42 @@ const CURRENT_MISSION_SOL = Math.ceil((Date.now() - MISSION_START_MILLIS) / MILL
 //--------------------------------------------------------------
 // Muldoon Graphing Page constants for UI input elements.
 //--------------------------------------------------------------
-const solHelp = document.getElementById('solHelp');
-const sol = document.getElementById('sol');
-const startTime = document.getElementById('startTime');
 const endTime = document.getElementById('endTime');
 const exportDataBtn = document.getElementById('exportDataBtn');
 const generatePlotBtn = document.getElementById('generatePlotBtn');
-const myPlot = document.getElementById('graph');
 const myModal = new bootstrap.Modal(document.getElementById('plotModal'));
 const myModalTitle = document.getElementById('plotModalTitle');
 const myModalMsg = document.getElementById('plotModalMsg');
+const myPlot = document.getElementById('graph');
+const processLevel = document.getElementById('processLevel');
 const sensor = document.getElementById('sensor');
+const sensorAttr = document.getElementById('sensorAttr');
 const shareURLBtn = document.getElementById('shareURLBtn');
+const sol = document.getElementById('sol');
+const solHelp = document.getElementById('solHelp');
+const startTime = document.getElementById('startTime');
+
+const medaDataConfig = [];
 const medaFileList = [];
 
+//--------------------------------------------------------------
+// Muldoon MEDA Data JSON
+//--------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+  //--------------------------------------------------------------
+  // Initialize an Object with available MEDA data specification
+  // attributes.
+  //--------------------------------------------------------------
+  let medaDataConfigCSV = "assets/config/meda-data-config.csv";
+
+  d3.text(medaDataConfigCSV).then(function(data) {
+    d3.csvParse(data, (d, i) => {
+      medaDataConfig.push(d);
+    });
+    
+    populateProcessLevelList();
+  });
+
   //--------------------------------------------------------------
   // Initialize an Object with available MEDA data CSV file
   //--------------------------------------------------------------
@@ -55,8 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
             filename: fileName,
             revision: revision,
             sensor: sensorName,
-            xField: 'LMST',
-            yField: setYField(sensorName)
           }
 
           medaFileList.push(medaFile);
@@ -98,8 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
             filename: fileName,
             revision: revision,
             sensor: sensorName,
-            xField: 'LMST',
-            yField: setYField(sensorName)
           }
 
           medaFileList.push(medaFile);
@@ -123,7 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
     sol.value = params.get('sol');
     startTime.value = params.get('start');
     endTime.value = params.get('end');
+    processLevel.selectedIndex = params.get('processLevel');
     sensor.selectedIndex = params.get('sensor');
+    sensorAttr.selectedIndex = params.get('sensorAttr');
 
     setTimeout(() => {
       generatePlotBtn.click();
@@ -147,19 +166,108 @@ function getParentDir(num) {
   else if (num <= 539) {
     return 'sol_0420_0539';
   }
+  else if (num <= 539) {
+    return 'sol_0540_0659';
+  }
 
   return;
 }
 
-function setYField(str) {
-  switch (str) {
-    case "ATS":
-      return ["ATS_LOCAL_TEMP1", "ATS_LOCAL_TEMP2", "ATS_LOCAL_TEMP3", "ATS_LOCAL_TEMP4", "ATS_LOCAL_TEMP5"];
-    case "PS":
-      return ["PRESSURE"];
-    case "WS":
-      return ["HORIZONTAL_WIND_SPEED", "WIND_SPEED_DIRECTION"];
-    default:
-      return;
+// This function populates the 'Process Level' options.
+const populateProcessLevelList = function() {
+  generatePlotBtn.disabled = true;
+
+  let processLevelList = medaDataConfig.filter(function (d) {
+    let key = d.Product_Type;
+
+    if (!this[key]) {
+      this[key] = true;
+      return true;
+    }
+  }, Object.create(null));
+
+  let htmlOptions = [];
+
+  processLevelList.sort((a, b) => (a.Product_Type > b.Product_Type) ? 1 : -1);
+
+  for (const item of processLevelList) {
+    let html = `<option value="${item.Product_Type}">${item.Processing_Level}</option>`;
+
+    htmlOptions.push(html);
   }
+
+  processLevel.innerHTML = htmlOptions.join("");
+  processLevel.selectedIndex = 0;
+
+  populateSensorList();
 }
+
+// This function populates the 'Sensor ID' options
+// based on the selected 'Process Level'.
+const populateSensorList = function() {
+  generatePlotBtn.disabled = true;
+
+  let sensorList = medaDataConfig.filter(function (d) {
+    let key = d.Product_Subtype;
+
+    if (d.Product_Type === processLevel.value) {
+      if (!this[key]) {
+        this[key] = true;
+        return true;
+      }
+    }
+  }, Object.create(null));
+
+  sensorList.sort((a, b) => (a.Product_Subtype_Desc > b.Product_Subtype_Desc) ? 1 : -1);
+
+  let htmlOptions = [];
+
+  for (const item of sensorList) {
+    let html = `<option value="${item.Product_Subtype}">${item.Product_Subtype_Desc} (${item.Product_Subtype})</option>`;
+
+    htmlOptions.push(html);
+  }
+
+  sensor.innerHTML = htmlOptions.join("");
+  sensor.selectedIndex = 0;
+
+  populateSensorAttrList();
+}
+
+// This function populates the 'Sensor Attribute' options
+// based on the selected 'Sensor ID'.
+const populateSensorAttrList = function() {
+  generatePlotBtn.disabled = true;
+
+  let sensorAttrList = medaDataConfig.filter(function (d) {
+    let key = d.Attr;
+
+    if (
+      (d.Product_Type === processLevel.value) &&
+      (d.Product_Subtype === sensor.value) &&
+      (! d.Attr.match(/^(SCLK|LMST|LTST)$/))
+    ) {
+      if (!this[key]) {
+        this[key] = true;
+        return true;
+      }
+    }
+  }, Object.create(null));
+
+  let htmlOptions = [];
+
+  sensorAttrList.sort((a, b) => (a.Attr > b.Attr) ? 1 : -1);
+
+  for (const item of sensorAttrList) {
+    let html = `<option value="${item.Attr}">${item.Attr}</option>`;
+
+    htmlOptions.push(html);
+  }
+
+  sensorAttr.innerHTML = htmlOptions.join("");
+  sensorAttr.selectedIndex = 0;
+  generatePlotBtn.disabled = false;
+}
+
+processLevel.addEventListener('change', populateSensorList, false);
+sensor.addEventListener('change', populateSensorAttrList, false);

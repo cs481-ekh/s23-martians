@@ -3,9 +3,11 @@
 .user-input {
   color: $primary;
   background: $secondary;
+  font-size: 0.9rem;
 
   .form-control,
   .form-select {
+    font-size: 0.8rem;
     color: $primary;
   }
 
