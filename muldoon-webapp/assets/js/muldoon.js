@@ -25,6 +25,7 @@ const sol = document.getElementById('sol');
 const solHelp = document.getElementById('solHelp');
 const startTime = document.getElementById('startTime');
 
+// Arrays storing MEDA data Objects.
 const medaDataConfig = [];
 const medaFileList = [];
 
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             directory: fileDir,
             filename: fileName,
             revision: revision,
-            sensor: sensorName,
+            sensor: sensorName
           }
 
           medaFileList.push(medaFile);
@@ -116,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
             directory: fileDir,
             filename: fileName,
             revision: revision,
-            sensor: sensorName,
+            sensor: sensorName
           }
 
           medaFileList.push(medaFile);

@@ -26,8 +26,29 @@ const generatePlot = function () {
 
   // Load MEDA data and generate a Plotly datavis.
   d3.csv(rawDataURL).then(function (rawData) {
+    var dataObj = medaDataConfig.filter(function (d) {
+      return ((d.Product_Type === processLevel.value) &&
+              (d.Product_Subtype === sensor.value) &&
+              (d.Attr === sensorAttr.value)
+             );
+    }, Object.create(null));
+
     var xField = 'LMST';
     var yField = sensorAttr.value;
+    var yUnits = dataObj.map(item => item.Unit);
+
+    if (yUnits.length > 0) {
+      yUnits = `(${yUnits})`;
+    }
+
+    //var yUnits = medaDataConfig.filter(function (d) {
+    //  if ((d.Product_Type === processLevel.value) &&
+    //      (d.Product_Subtype === sensor.value) &&
+    //      (d.Attr === sensorAttr.value)
+    //  ) {
+    //    return `(${d.Unit})`;
+    //  }
+    //});
 
     var plotTitle = sensorName + "<br><sup>Sol " + sol.value + " - " + startTime.value + " to " + endTime.value + "</sup>";
     var data = prepData(rawData, xField, yField);
@@ -66,7 +87,7 @@ const generatePlot = function () {
         autorange: true,
         rangemode: "normal",
         title: {
-          text: yField,
+          text: `${yField} &nbsp; ${yUnits}`,
           font: {
             size: 24
           }
