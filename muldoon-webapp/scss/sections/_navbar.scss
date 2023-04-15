@@ -3,17 +3,30 @@
 .menu {
   background: $primary;
 
+  .navbar-brand {
+    color: $secondary;
+  }
+
   li {
     padding: 0 0.7rem;
   }
 
-  a {
+  a.nav-link { 
     color: $white;
     text-transform: capitalize;
     font-weight: 600;
   }
 
-  a:hover {
+  a.nav-link:hover,
+  a.dropdown-item:hover {
     color: peru;
+  }
+
+  a.dropdown-item {
+    color: $primary;
+  }
+
+  .publication {
+    font-style: italic;
   }
 }

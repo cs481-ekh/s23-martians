@@ -14,21 +14,54 @@
       <div class="row">
         <!-- start navbar -->
         <header class="col navbar navbar-expand-lg navbar-dark sticky-top shadow menu">
-          <a class="navbar-brand mb-0 p-0 fs-1 fw-bold" href="#">
+          <div class="navbar-brand mb-0 p-0 fs-1 fw-bold">
             <img src="assets/images/mars-logo.png" alt="mars-logo" height="65px" class="d-inline-block">
             Muldoon
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <!-- <div class="collapse navbar-collapse justify-content-end" id="navbarAltMarkup"> -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="https://atmos.nmsu.edu/data_and_services/atmospheres_data/PERSEVERANCE/meda.html" target="_blank">Mars 2020 PDS</a>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mars 2020</a>
+                <div class="dropdown-menu">
+                    <a href="https://atmos.nmsu.edu/data_and_services/atmospheres_data/PERSEVERANCE/meda.html" class="dropdown-item" target="_blank">Perseverance MEDA Archive</a>
+                    <a href="https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/document/meda_bundle_sis.pdf" class="dropdown-item" target="_blank">Software Interface Specification (SIS)</a>
+                </div>
               </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Publications</a>
+                <div class="dropdown-menu publications">
+                  <div class="publication">
+                    <a href="https://iopscience.iop.org/article/10.3847/PSJ/ac260d" class="dropdown-item" target="_blank">
+                      The Mars Environmental Dynamics Analyzer, MEDA. A Suite of Environmental Sensors for the Mars 2020 Mission
+                    </a>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="publication">
+                    <a href="https://iopscience.iop.org/article/10.3847/PSJ/ac4586" class="dropdown-item" target="_blank">
+                      Inferring Vortex and Dust Devil Statistics from InSight
+                    </a>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="publication">
+                    <a href="" class="dropdown-item" target="_blank">
+                      Vortices and Dust Devils as Observed by the Mars Environmental Dynamics Analyzer Instruments on Board the Mars 2020 Perseverance Rover
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!--
               <li class="nav-item">
                 <a class="nav-link" href="http://www.astrojack.com" target="_blank">Astrojack</a>
               </li>
+              -->
+              <li class="nav-item">
+                <a class="nav-link" href="#About">About</a>
+              </li>
+            </li>
             </ul>
           </div>
         </header>
@@ -38,38 +71,36 @@
       <div class="row flex-grow-1">
         <!-- begin sidebar -->
         <div class="col-md-3 col-lg-2 d-md-block sidebar shadow user-input">
-          <form class="mt-3">
-            <div class="mb-3">
-              <label id="solLabel" for="sol">Mission Sol</label>
-              <input type="number" class="form-control form-control-sm" id="sol" min="1" max="10" value="1">
+          <form>
+            <div class="my-3">
+              <label for="sol">Mission Sol</label>
+              <input type="number" class="form-control" id="sol" min="1" max="10" value="1">
               <div id="solHelp" class="form-text sol-help" hidden>Max sol data available: xxx</div>
             </div>
-            <div class="mb-3">
-              <label for="startTime" class="form-label">Start Time (LMST)</label>
-              <input type="time" class="form-control form-control-sm" id="startTime" value="00:00">
+            <div class="my-3">
+              <label for="startTime">Start Time (LMST)</label>
+              <input type="time" class="form-control" id="startTime" value="00:00">
             </div>
-            <div class="mb-3">
-              <label for="endTime" class="form-label">End Time (LMST)</label>
-              <input type="time" class="form-control form-control-sm" id="endTime" value="23:59">
+            <div class="my-3">
+              <label for="endTime">End Time (LMST)</label>
+              <input type="time" class="form-control" id="endTime" value="23:59">
             </div>
-            <div class="mb-3">
-              <label for="processLevel" class="form-label">Process Level</label>
-              <select class="form-select" id="processLevel"></select>
-            </div>
-            <div class="mb-3">
-              <label for="sensor" class="form-label">Sensor ID</label>
-              <select class="form-select" id="sensor">
-                  <option value="ATS">Atmosphere (ATS)</option>
-                  <option value="PS" selected>Pressure (PS)</option>
-                  <option value="WS">Wind (WS)</option>
+            <div class="my-3">
+              <label for="processLevel">Process Level</label>
+              <select class="form-select" id="processLevel">
               </select>
             </div>
-            <div class="mb-3">
-              <label for="sensorAttr" class="form-label">Sensor Attribute</label>
+            <div class="my-3">
+              <label for="sensor">Sensor ID</label>
+              <select class="form-select" id="sensor">
+              </select>
+            </div>
+            <div class="my-3">
+              <label for="sensorAttr">Sensor Attribute</label>
               <select class="form-select" id="sensorAttr">
               </select>
             </div>
-            <div class="mb-3">
+            <div class="my-3">
               <button id="generatePlotBtn" type="button" class="btn btn-primary">Generate Plot</button>
             </div>
           </form>              
@@ -84,7 +115,7 @@
       
         <!-- begin plot display section -->
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom dashboard">
+          <div class="d-flex flex-wrap flex-md-nowrap align-items-center my-3 pb-2 border-bottom dashboard">
             <h1 class="h2">Dashboard</h1>
             <div class="btn-toolbar mx-3 mb-2 mb-md-0">
               <div class="btn-group me-2">

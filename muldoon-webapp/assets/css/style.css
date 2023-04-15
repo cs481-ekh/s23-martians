@@ -10772,16 +10772,26 @@ textarea.form-control-lg {
 .menu {
   background: #5e644a;
 }
+.menu .navbar-brand {
+  color: #dee0a8;
+}
 .menu li {
   padding: 0 0.7rem;
 }
-.menu a {
+.menu a.nav-link {
   color: #fff;
   text-transform: capitalize;
   font-weight: 600;
 }
-.menu a:hover {
+.menu a.nav-link:hover,
+.menu a.dropdown-item:hover {
   color: peru;
+}
+.menu a.dropdown-item {
+  color: #5e644a;
+}
+.menu .publication {
+  font-style: italic;
 }
 
 .user-input {
