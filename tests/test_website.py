@@ -335,3 +335,23 @@ def test_linkToAstrojackEdge():
       driver.quit()
    except:
       print("Error")
+
+# Testing for Safari Browser
+
+def test_titleSafari():
+   try:
+      
+      driver = webdriver.Safari()
+
+      driver.get("https://sdp.boisestate.edu/s23-martians/")
+    
+      driver.implicitly_wait(1)
+      try:
+         if(driver.find_element_by(by=By.Name, value = "titleBar")):
+            assert True
+      except: 
+            assert False
+      driver.quit()
+
+   except:
+      print("Error")
