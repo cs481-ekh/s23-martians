@@ -16,14 +16,13 @@ titles_from_headings:
 # syntax_theme: ./syntax.css # Leave empty for default, otherwise link to a pygments stylesheet
 
 colors:
-    gradient_left: "#155799"    # this defaults to #155799
-    gradient_right: "#159957"   # this defaults to #159957
-    header: "#fff"              # this defaults to 
-    android_theme: "#000"       # this defaults to gradient_color
-    link: "#1e6bb8"             # this defaults to gradient_color
-    section_title: "#155799"    # this defaults to gradient_color
+    gradient_left: "#873e23"    # default: #155799
+    gradient_right: "#e28743"   # default: #159957
+    header: "#fff"              # default: #fff 
+    android_theme: "#000"       # default: #000
+    link: "#1e6bb8"             # default: #136bb8
+    section_title: "#155799"    # default: #155799
 buttons:
-      github_title: Documention             # default "View on Github"
       github_hide: false        # hides "View on Github"
       zip_url:
       zip_title:                # default "Download .zip"
