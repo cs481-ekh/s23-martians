@@ -1,4 +1,4 @@
 theme: jekyll-theme-cayman
 title: "Muldoon"
 description: "A package for sifting meteorological data to look for and analyze vortex encounters"
-show-downloads: true
+show_downloads: true
