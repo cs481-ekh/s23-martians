@@ -4,12 +4,14 @@ show_downloads: true
 google_analytics:
 google_analytics_anonymize: false
 darkmode: false
-theme: jekyll-theme-cayman
+remote_theme: tuur29/pages-themes-cayman
+#theme: jekyll-theme-cayman
 titles_from_headings:
   enabled:     false
   strip_title: false
   collections: false
-
+logo_url: https://github.githubassets.com/images/icons/emoji/octocat.png
+syntax_theme: https://stylishthemes.github.io/Syntax-Themes/pygments/css-github/pygments-monokai.css
 
 # hide_first_title: false # Useful if README.md is used on both github and pages
 # logo_url: ./logo.png # Either absolute or relative url
