@@ -1,6 +1,8 @@
-# Muldoon [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build/Test Check](https://github.com/cs481-ekh/s23-martians/actions/workflows/ci.yml/badge.svg)](https://github.com/cs481-ekh/s23-martians/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# Muldoon
 A package for sifting meteorological data to look for and analyze vortex encounters
 
-## Project History
-Spring 2023 - [Martians](https://cs481-ekh.github.io/s23-martians/)  
-Fall 2022 - [Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/)
+## Project Contributions
+Spring 2023 - [Team Martians](https://cs481-ekh.github.io/s23-martians/), _Boise State Computer Science_  
+Fall 2022 - [Team Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/), _Boise State Computer Science_
