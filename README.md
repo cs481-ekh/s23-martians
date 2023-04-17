@@ -2,5 +2,5 @@
 A package for sifting meteorological data to look for and analyze vortex encounters
 
 ## Project History
-Spring 2023 - [Martians](https://cs481-eks/f22-dust-devils)  
-Fall 2022 - [Dust Devils](https://cs481-eks/f22-dust-devils)
+Spring 2023 - [Martians](https://cs481-ekh.github.io/s23-martians/)  
+Fall 2022 - [Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/)
