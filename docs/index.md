@@ -1,4 +1,3 @@
-# Muldoon
 
 ## Team Members:
  - Spencer Mirly
