@@ -1,26 +1,9 @@
-# title: Muldoon
-# description: A package for sifting meteorological data to look for and analyze vortex encounters
-# show_downloads: true
-# google_analytics:
-# theme: jekyll-theme-cayman
-
 title: Muldoon
 description: A package for sifting meteorological data to look for and analyze vortex encounters
 show_downloads: true
-remote_theme: tuur29/pages-themes-cayman
+google_analytics:
+theme: jekyll-theme-cayman
 titles_from_headings:
   enabled:     false
   strip_title: false
   collections: false
-color:
-  header: "#000"
-  gradient_left: "#e53935"
-  gradient_right: "#f57c00"
-logo_url: https://github.githubassets.com/images/icons/emoji/octocat.png
-syntax_theme: https://stylishthemes.github.io/Syntax-Themes/pygments/css-github/pygments-monokai.css
-buttons:
-  zip_title: 
-  zip_hide: false
-  tar_title: 
-  tar_hide: false
-  github_hide: false
