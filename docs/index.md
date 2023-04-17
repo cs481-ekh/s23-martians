@@ -1,5 +1,4 @@
-
-## Team Members:
+## Team Member
  - Spencer Mirly
  - Matthew Rockenhaus
  - Ryan Rickerl
