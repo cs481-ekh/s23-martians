@@ -1,3 +1,4 @@
+remote_theme: pages-themes/cayman@v0.2.0
 title: Muldoon
 description: A package for sifting meteorological data to look for and analyze vortex encounters
 show_downloads: true
