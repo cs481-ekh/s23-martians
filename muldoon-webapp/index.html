@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/libs/d3.v7.min.js"></script>
     <script src="assets/libs/plotly-2.18.2.min.js"></script>
+    <script src="assets/libs/moment.min.js"></script>
   </head>
   <body>
     <div class="container-fluid min-vh-100 d-flex flex-column">
@@ -77,11 +78,13 @@
             </div>
             <div class="my-3">
               <label for="startTime">Start Time (LMST)</label>
-              <input type="time" class="form-control" id="startTime" value="00:00">
+              <input type="text" class="form-control" id="startTime" value="00:00:00">
+              <div id="startHelp" class="form-text sol-help" hidden>Value must be a valid time of format HH:MM:SS</div>
             </div>
             <div class="my-3">
               <label for="endTime">End Time (LMST)</label>
-              <input type="time" class="form-control" id="endTime" value="23:59">
+              <input type="text" class="form-control" id="endTime" value="23:59:59">
+              <div id="endHelp" class="form-text sol-help" hidden>Value must be a valid time of format HH:MM:SS</div>
             </div>
             <div class="my-3">
               <label for="processLevel">Process Level</label>
