@@ -204,6 +204,9 @@ function shareURL() {
 
     navigator.clipboard.writeText(url);
 
+    urlDisplay.innerHTML = url;
+    urlDisplay.href = url;
+
     alert("URL copied to clipboard");
   }
 }
