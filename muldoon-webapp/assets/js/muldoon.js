@@ -28,6 +28,7 @@ const solHelp = document.getElementById('solHelp');
 const startTime = document.getElementById('startTime');
 const startHelp = document.getElementById('startHelp');
 const endHelp = document.getElementById('endHelp');
+const urlDisplay = document.getElementById('urlDisplay');
 
 // Arrays storing MEDA data Objects.
 const medaDataConfig = [];
