@@ -29,6 +29,8 @@ const startTime = document.getElementById('startTime');
 const startHelp = document.getElementById('startHelp');
 const endHelp = document.getElementById('endHelp');
 const urlDisplay = document.getElementById('urlDisplay');
+const resetStartBtn = document.getElementById('resetStartBtn');
+const resetEndBtn = document.getElementById('resetEndBtn');
 
 // Arrays storing MEDA data Objects.
 const medaDataConfig = [];
@@ -307,4 +309,13 @@ processLevel.addEventListener('change', populateSensorList, false);
 sensor.addEventListener('change', populateSensorAttrList, false);
 startTime.addEventListener('input', (e) => {checkTime(startTime, startHelp)});
 endTime.addEventListener('input', (e) => {checkTime(endTime, endHelp)});
+
+resetStartBtn.addEventListener('click', () => {
+  startTime.value = "00:00:00";
+  checkTime(startTime, startHelp);
+});
+resetEndBtn.addEventListener('click', () => {
+  endTime.value = "23:59:59";
+  checkTime(endTime, endHelp);
+});
 
