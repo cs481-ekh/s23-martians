@@ -26,6 +26,8 @@ const shareURLBtn = document.getElementById('shareURLBtn');
 const sol = document.getElementById('sol');
 const solHelp = document.getElementById('solHelp');
 const startTime = document.getElementById('startTime');
+const startHelp = document.getElementById('startHelp');
+const endHelp = document.getElementById('endHelp');
 
 // Arrays storing MEDA data Objects.
 const medaDataConfig = [];
@@ -287,5 +289,21 @@ const populateSensorAttrList = function() {
   }
 }
 
+const checkTime = function(elem, help) {
+  if(moment(elem.value, "HH:mm:ss", true).isValid()) {
+    elem.style.backgroundColor = "white";
+    if(help) {help.hidden = true;}
+    return true;
+  }
+  else {
+    elem.style.backgroundColor = "lightcoral";
+    if(help) {help.hidden = false};
+    return false;
+  }
+}
+
 processLevel.addEventListener('change', populateSensorList, false);
 sensor.addEventListener('change', populateSensorAttrList, false);
+startTime.addEventListener('input', (e) => {checkTime(startTime, startHelp)});
+endTime.addEventListener('input', (e) => {checkTime(endTime, endHelp)});
+

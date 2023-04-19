@@ -1,6 +1,10 @@
 let plotChartFromURL = (window.location.search !== "");
 
 const generatePlot = function () {
+  if(!checkTime(startTime, startHelp) || !checkTime(endTime, endHelp)){
+    return;
+  }
+
   let sensorName = sensor.options[sensor.selectedIndex].text;
   let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
 
