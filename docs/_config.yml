@@ -1,7 +1,6 @@
 title: Muldoon
 description: A package for sifting meteorological data to look for and analyze vortex encounters
 show_downloads: true
-google_analytics:
 theme: jekyll-theme-cayman
 titles_from_headings:
   enabled:     false

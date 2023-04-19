@@ -21,3 +21,9 @@ existing analysis tools will build upon the interactive webpage implementation i
 * What was built
 * How it works
 * Screenshots
+
+![Muldoon App](./assets/images/muldoon-app-1.png)
+![App UI](./assets/images/primary-ui.png)
+![Dashboard UI](./assets/images/dashboard-ui.png)
+![Plotly UI](./assets/images/plotly-ui.png)
+![Plot Hover](./assets/images/plotly-hover.png)
