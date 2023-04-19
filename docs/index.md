@@ -22,8 +22,22 @@ existing analysis tools will build upon the interactive webpage implementation i
 * How it works
 * Screenshots
 
-![Muldoon App](./assets/images/muldoon-app-1.png)
-![App UI](./assets/images/primary-ui.png)
-![Dashboard UI](./assets/images/dashboard-ui.png)
-![Plotly UI](./assets/images/plotly-ui.png)
-![Plot Hover](./assets/images/plotly-hover.png)
+|![Muldoon App](./assets/images/muldoon-app-1.png)|
+|:--:|
+|<b>Fig.1 - Muldoon MEDA data application</b>|
+
+|![App UI](./assets/images/primary-ui.png)|
+|:--:|
+|<b>Fig.2 - Application input options</b>|
+
+|![Dashboard UI](./assets/images/dashboard-ui.png)|
+|:--:|
+|<b>Fig.3 - MEDA plot dashboard options</b>|
+
+|![Plotly UI](./assets/images/plotly-ui.png)|
+|:--:|
+|<b>Fig.4 - MEDA plot navigation</b>|
+
+|![Plot Hover](./assets/images/plotly-hover.png)|
+|:--:|
+|<b>Fig.5 - MEDA plot hover tooltip</b>|
