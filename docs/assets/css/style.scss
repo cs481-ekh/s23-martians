@@ -16,7 +16,43 @@
 }
 
 .main-content {
+  max-width: 80rem;
+  min-width: 80rem;
+
   h1, h2, h3, h4, h5, h6 {
       color: rgba(119, 47, 26, 1.0);
+  }
+
+  h1, h2 {
+    border-bottom: 2px solid #e5e5e5;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    border: 1px solid #606c71;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  li p {
+    margin-top: 0px;
+  }
+
+  figure {
+    display: table;
+    font-size: 0.8rem;
+  }
+
+  img, figcaption {
+    display: table-row;
+  }
+
+  figure:nth-of-type(2) {
+    float: right;
   }
 }
