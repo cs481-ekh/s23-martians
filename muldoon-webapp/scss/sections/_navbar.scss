@@ -2,6 +2,8 @@
 
 .menu {
   background: $primary;
+  background-image: linear-gradient(rgba(119, 47, 26, 0.9), rgba(0, 0, 0, 0.8)), url(../images/muldoon-header.png);
+  background-position: 0% 24%;
 
   .navbar-brand {
     color: $secondary;

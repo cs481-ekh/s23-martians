@@ -10771,6 +10771,8 @@ textarea.form-control-lg {
 }
 .menu {
   background: #5e644a;
+  background-image: linear-gradient(rgba(119, 47, 26, 0.9), rgba(0, 0, 0, 0.8)), url(../images/muldoon-header.png);
+  background-position: 0% 24%;
 }
 .menu .navbar-brand {
   color: #dee0a8;
