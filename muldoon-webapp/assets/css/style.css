@@ -10891,5 +10891,13 @@ textarea.form-control-lg {
   background-color: #dee0a8;
   filter: brightness(0.7);
 }
+.dashboard .share-url-msg a {
+  color: #9b0000;
+}
+.dashboard .share-url-msg span {
+  color: #5e644a;
+  font-size: 0.8rem;
+  font-style: italic;
+}
 
 /*# sourceMappingURL=style.css.map */

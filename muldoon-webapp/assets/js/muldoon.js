@@ -12,6 +12,8 @@ const CURRENT_MISSION_SOL = Math.ceil((Date.now() - MISSION_START_MILLIS) / MILL
 //--------------------------------------------------------------
 // Muldoon Graphing Page constants for UI input elements.
 //--------------------------------------------------------------
+const dashboardMsg = document.getElementById('dashboardMsg');
+const endHelp = document.getElementById('endHelp');
 const endTime = document.getElementById('endTime');
 const exportDataBtn = document.getElementById('exportDataBtn');
 const generatePlotBtn = document.getElementById('generatePlotBtn');
@@ -20,17 +22,15 @@ const myModalTitle = document.getElementById('plotModalTitle');
 const myModalMsg = document.getElementById('plotModalMsg');
 const myPlot = document.getElementById('graph');
 const processLevel = document.getElementById('processLevel');
+const resetStartBtn = document.getElementById('resetStartBtn');
+const resetEndBtn = document.getElementById('resetEndBtn');
 const sensor = document.getElementById('sensor');
 const sensorAttr = document.getElementById('sensorAttr');
 const shareURLBtn = document.getElementById('shareURLBtn');
 const sol = document.getElementById('sol');
 const solHelp = document.getElementById('solHelp');
-const startTime = document.getElementById('startTime');
 const startHelp = document.getElementById('startHelp');
-const endHelp = document.getElementById('endHelp');
-const urlDisplay = document.getElementById('urlDisplay');
-const resetStartBtn = document.getElementById('resetStartBtn');
-const resetEndBtn = document.getElementById('resetEndBtn');
+const startTime = document.getElementById('startTime');
 
 // Arrays storing MEDA data Objects.
 const medaDataConfig = [];

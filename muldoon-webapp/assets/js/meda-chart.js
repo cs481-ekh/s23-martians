@@ -204,10 +204,14 @@ function shareURL() {
 
     navigator.clipboard.writeText(url);
 
-    urlDisplay.innerHTML = url;
-    urlDisplay.href = url;
-
-    alert("URL copied to clipboard");
+    dashboardMsg.innerHTML = `<div class="share-url-msg">`
+                           + `  <a href="${url}" class="share-url-msg">URL copied to clipboard</a>`
+                           + `  <span>(note: link available for manual copy for 15s.)</span>`
+                           + `</div>`;
+  
+    setTimeout(() => {
+      dashboardMsg.innerHTML = "";
+    }, 15000);
   }
 }
 

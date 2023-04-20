@@ -22,4 +22,14 @@
     background-color: $secondary;
     filter: brightness(0.7);
   }
+
+  .share-url-msg a {
+    color: $darkred;
+  }
+
+  .share-url-msg span {
+    color: $primary;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
 }
