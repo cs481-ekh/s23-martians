@@ -19,14 +19,22 @@
     font-weight: 600;
   }
 
-  a.nav-link:hover,
-  a.dropdown-item:hover {
+  a.nav-link:hover {
     color: peru;
   }
 
   a.dropdown-item {
     color: $primary;
     font-size: 0.85rem;
+  }
+
+  a.dropdown-item:hover, 
+  a.dropdown-item:active {
+    color: $darkred;
+  }
+
+  a.dropdown-item:active {
+    background-color: rgba(119, 47, 26, 0.3);
   }
 
   .publication {
