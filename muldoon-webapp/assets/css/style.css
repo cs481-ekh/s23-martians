@@ -10791,6 +10791,7 @@ textarea.form-control-lg {
 }
 .menu a.dropdown-item {
   color: #5e644a;
+  font-size: 0.85rem;
 }
 .menu .publication {
   font-style: italic;
