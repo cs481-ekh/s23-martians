@@ -15,19 +15,19 @@ Fall 2022 - [Team Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/), _B
 | HtmlPage/          | Fall 2022 project website. (Fall 2022)
 | docs/              | GitHub page. (Spring 2023)
 | muldoon-webapp/    | Front-end web application for visualizing Mars 2020 MEDA data.
-| muldoon/           |
-| tests/             |
+| muldoon/           | MEDA data analysis utility and API.
+| tests/             | Test suite for analysis util.
 | BSUREADME.md       |
-| CONTRIBUTORS.md    |
-| LICENSE            |
+| CONTRIBUTORS       | List of contributors.
+| LICENSE            | MIT license.
 | README.md          | This file.
-| build.sh           |
-| clean.sh           |
-| dependencies.sh    |
+| build.sh           | Build script for analysis util.
+| clean.sh           | Clean script for analysis util.
+| dependencies.sh    | Dependencies script for analysis util.
 | docker-compose.yml | Docker/podman yaml file for creating a muldoon-webapp container.
-| requirements.txt   |
-| setup.py           |
-| test.sh            |
+| requirements.txt   | Configuration file for analysis util; setup.py process.
+| setup.py           | Python setup script for analysis util.
+| test.sh            | Test script for analysis util.
 
 ## Development Environment
 #### Required
@@ -50,4 +50,4 @@ From the muldoon-webapp directory, execute the following command within a termin
 $> npm run compile:sass
 ```
 
-## Testing
+## Testing muldoon-webapp
