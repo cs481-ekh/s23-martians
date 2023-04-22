@@ -10833,6 +10833,11 @@ textarea.form-control-lg {
   background-color: #4682b4;
   filter: brightness(0.7);
 }
+.user-input img {
+  border: 1px solid #606c71;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
 
 .plot {
   /* Safari */
