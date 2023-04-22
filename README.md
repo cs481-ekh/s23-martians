@@ -16,6 +16,7 @@ Fall 2022 - [Team Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/), _B
 | docs/              | GitHub page. (Spring 2023)
 | muldoon-webapp/    | Front-end web application for visualizing Mars 2020 MEDA data.
 | muldoon/           | MEDA data analysis utility and API.
+| nginx/             | Docker/Podman configuration files.
 | tests/             | Test suite for analysis util.
 | BSUREADME.md       |
 | CONTRIBUTORS       | List of contributors.
@@ -24,18 +25,23 @@ Fall 2022 - [Team Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/), _B
 | build.sh           | Build script for analysis util.
 | clean.sh           | Clean script for analysis util.
 | dependencies.sh    | Dependencies script for analysis util.
-| docker-compose.yml | Docker/podman yaml file for creating a muldoon-webapp container.
+| docker-compose.yml | Docker/Podman yaml file for creating a muldoon-webapp container.
 | requirements.txt   | Configuration file for analysis util; setup.py process.
 | setup.py           | Python setup script for analysis util.
 | test.sh            | Test script for analysis util.
 
 ## Development Environment
 #### Required
-* [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org)
+
 #### Recommended
 - Code Editor - [Visual Studio Code](https://code.visualstudio.com)
   - Extension - [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
   - Extension - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
+#### Container Requirements
+- podman - [podman.io](https://podman.io)
+- podman-compose
 
 ## Building muldoon-webapp
 #### Installing node modules
@@ -49,5 +55,13 @@ From the muldoon-webapp directory, execute the following command within a termin
 ```
 $> npm run compile:sass
 ```
+#### Container Setup
+From the base project directory, execute the following command within a terminal window.
+```
+$> podman-compose -f ./docker-compose.yml up -d
+```
+Once the command has successfully completed with _exit code: 0_, the muldoon-webapp should be accissbile at
+[http://localhost:8100](http://localhost:8100) on the localhost.
+
 
 ## Testing muldoon-webapp
