@@ -29,7 +29,26 @@ Fall 2022 - [Team Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/), _B
 | setup.py           |
 | test.sh            |
 
+## Development Environment
+#### Required
+* [Node.js](https://nodejs.org)
+#### Recommended
+- Code Editor - [Visual Studio Code](https://code.visualstudio.com)
+  - Extension - [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+  - Extension - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
 ## Building muldoon-webapp
+#### Installing node modules
+Starting from the base project directory, execute the following commands within a terminal window.
+```
+$> cd muldoon-webapp
+$> npm install
+```
+#### Live compilation of Sass
+From the muldoon-webapp directory, execute the following command within a terminal window.
+```
+$> npm run compile:sass
+```
 
 
 ## Features and Usage
