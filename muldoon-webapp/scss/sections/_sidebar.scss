@@ -34,4 +34,10 @@
     background-color: $steelblue;
     filter: brightness(0.7);
   }
+  
+  img {
+    border: 1px solid #606c71;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.15);
+  }
 }

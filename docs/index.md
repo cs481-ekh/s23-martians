@@ -20,28 +20,30 @@ to explore the data and collarborate in a more effective manner. Incorporation o
 existing analysis tools will build upon the interactive webpage implementation in the future.</p>
 
 <h2>Project Description</h2>
- <ul>
-   <li>What was built</li>
-   <li>How it works</li>
-   <li>Screenshots</li>
+<ul><i>TODO:</i>
+  <li><i>What was built</i></li>
+  <li><i>How it works</i></li>
+  <li><i>Screenshots</i></li>
 </ul>
 
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+scrambled it to make a type specimen book.</p>
+
 <figure>
-  <img src="./assets/images/muldoon-app-1.png" />
+  <img src="./assets/images/muldoon-webapp.png" />
   <figcaption>Figure 1: Muldoon application</figcaption>
 </figure>
 
 <h3>User Interface (UI)</h3>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+scrambled it to make a type specimen book.</p>
+
 <figure>
   <img src="./assets/images/primary-ui.png" />
   <figcaption>Figure 2: User interface (UI) for Mulldoon application</figcaption>
 </figure>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
 <ul>
   <li><b>Sol</b>
@@ -68,9 +70,7 @@ like Aldus PageMaker including versions of Lorem Ipsum.</p>
 <br clear="both" />
 
 <h3>Plot Dashboard Options</h3>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-scrambled it to make a type specimen book.</p>
+<p>The ability to collaborate with peers has been implemented through the <i>Share URL</i> and <i>Export Data</i> functions seen in Figure 3.</p>
 
 <figure>
   <img src="./assets/images/dashboard-ui.png" />
@@ -79,17 +79,19 @@ scrambled it to make a type specimen book.</p>
 
 <ul>
   <li><b>Share URL</b>
-    <p>(needs description)</p>
+    <p>Button which copies the current plot conditions (including zoom constraints) to the clipboard. An
+    option to manually copy the link is also presented with timeout delay of 15s.</p>
+    <p><i>Note: for copy-to-clipboard to function properly, the browser requires clipboard write
+    permission.</i></p>
   </li>
   <li><b>Export Data</b>
-    <p>(needs description)</p>
+    <p>Button for downloading the current plot MEDA data file.</p>
   </li>
 </ul>
 
 <h3>Plot Navigation Options</h3>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and 
-scrambled it to make a type specimen book.</p>
+<p>The Plotly javascript library provides a set of built functions (Figure 4) for navigation; displayed
+in the upper right corner of the visualization. Each function is described from left to right below.</p>
 
 <figure>
   <img src="./assets/images/plotly-ui.png" />
@@ -98,32 +100,28 @@ scrambled it to make a type specimen book.</p>
 
 <ul>
   <li><b>Download plot as png</b>
-    <p>(needs description)</p>
+    <p>Download a png image of the current plot view.</p>
   </li>
   <li><b>Zoom</b>
-    <p>(needs description)</p>
+    <p>Zoom an area of the current plot by dragging a selection with the mouse.</p>
   </li>
   <li><b>Pan</b>
-    <p>(needs description)</p>
+    <p>Pan the current plot by dragging the mouse.</p>
   </li>
   <li><b>Zoom in</b>
-    <p>(needs description)</p>
+    <p>Zoom in the center point of the current plot.</p>
   </li>
   <li><b>Zoom out</b>
-    <p>(needs description)</p>
+    <p>Zoom out the center point of the current plot.</p>
   </li>
   <li><b>Reset axes</b>
-    <p>(needs description)</p>
+    <p>Reset the current plot axes and display the entire range of data requested by <i>Start Time</i> and
+    <i>End Time</i> inputs.</p>
   </li>
 </ul>
 
 <h3>Plot Hover Tooltips</h3>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p>Hover tooltips are displayed on mouseover of any data point of the current plot.</p>
 <figure>
   <img src="./assets/images/plotly-hover.png" />
   <figcaption>Figure 5: Plot hover tooltip for Muldoon application</figcaption>
