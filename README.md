@@ -39,16 +39,15 @@ Fall 2022 - [Team Dust Devils](https://cs481-ekh.github.io/f22-dust-devils/), _B
 
 ## Building muldoon-webapp
 #### Installing node modules
-Starting from the base project directory, execute the following commands within a terminal window.
+Starting from the base project directory, execute the following commands within a terminal window. (If using Visual Studio Code, <kbd>Ctrl + `</kbd> opens a terminal window.)
 ```
 $> cd muldoon-webapp
 $> npm install
 ```
 #### Live compilation of Sass
-From the muldoon-webapp directory, execute the following command within a terminal window.
+From the muldoon-webapp directory, execute the following command within a terminal window. (If using Visual Studio Code, <kbd>Ctrl + `</kbd> opens a terminal window.)
 ```
 $> npm run compile:sass
 ```
 
-
-## Features and Usage
+## Testing
