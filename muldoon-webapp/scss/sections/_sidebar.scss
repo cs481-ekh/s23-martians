@@ -3,6 +3,7 @@
 .user-input {
   color: $primary;
   background: $secondary;
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.2);
   font-size: 0.9rem;
 
   .form-control,
@@ -39,5 +40,10 @@
     border: 1px solid #606c71;
     border-radius: 4px;
     box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.15);
+  }
+
+  .copy {
+    color: $primary;
+    padding-top: 0.5rem;
   }
 }

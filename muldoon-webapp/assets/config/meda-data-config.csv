@@ -1,4 +1,4 @@
-"Instument_Id","Product_Type","Processing_Level","Product_Subtype","Product_Subtype_Desc","Attr","Data_Type","Unit"
+"Instrument_Id","Product_Type","Processing_Level","Product_Subtype","Product_Subtype_Desc","Attr","Data_Type","Unit"
 "WE","CAL","Calibrated","ATS","Air Temperature","SCLK","ASCII_Real","s"
 "WE","CAL","Calibrated","ATS","Air Temperature","LMST","ASCII_String","HH:mm:ss"
 "WE","CAL","Calibrated","ATS","Air Temperature","LTST","ASCII_String","HH:mm:ss"

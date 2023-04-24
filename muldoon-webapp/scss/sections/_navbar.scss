@@ -4,6 +4,7 @@
   background: $primary;
   background-image: linear-gradient(rgba(119, 47, 26, 0.9), rgba(0, 0, 0, 0.8)), url(../images/muldoon-header.png);
   background-position: 0% 24%;
+  box-shadow: 0 0.5rem 0.5rem rgba(119, 47, 26, 0.2);
 
   .navbar-brand {
     color: $secondary;
