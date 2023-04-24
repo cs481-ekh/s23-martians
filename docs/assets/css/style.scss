@@ -60,4 +60,14 @@
     border-top: 2px solid #e5e5e5;
     padding: 8px;
   }
+
+  .sdp-logo {
+    align-items: center;
+    display: inline-flex;
+    float: right;
+  
+    span {
+      padding-right: 0.5rem;
+    }
+  }
 }
