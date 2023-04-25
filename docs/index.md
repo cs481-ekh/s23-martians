@@ -41,7 +41,7 @@ industry's standard dummy text ever since the 1500s, when an unknown printer too
 scrambled it to make a type specimen book.</p>
 
 <figure>
-  <img src="./assets/images/primary-ui.png" />
+  <img src="./assets/images/muldoon-webapp-ui.png" />
   <figcaption>Figure 2: User interface (UI) for Mulldoon application</figcaption>
 </figure>
 
