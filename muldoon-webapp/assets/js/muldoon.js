@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           let medaFile = {
             id: fileId,
+            productType: 'DER',
             collection: 'data_derived_env',
             parent: parentDir,
             directory: fileDir,
@@ -97,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
           medaFileList.push(medaFile);
         }
         else {
-          let errMsg = "Failed to get location for fileId: " + fileId + " filename: " + fileName + " revision: " + revision + " sensor: " + sensorName;
-          // console.log(errMsg);
+          let errMsg = `Failed to get location for fileId: ${fileId} filename: ${fileName} revision: ${revision} sensor: ${sensorName}`;
+          //console.log(errMsg);
         }
       }
     });
@@ -127,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           let medaFile = {
             id: fileId,
+            productType: 'CAL',
             collection: 'data_calibrated_env',
             parent: parentDir,
             directory: fileDir,
@@ -138,8 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
           medaFileList.push(medaFile);
         }
         else {
-          let errMsg = "Failed to get location for fileId: " + fileId + " filename: " + fileName + " revision: " + revision + " sensor: " + sensorName;
-          // console.log(errMsg);
+          let errMsg = `Failed to get location for fileId: ${fileId} filename: ${fileName} revision: ${revision} sensor: ${sensorName}`;
+          //console.log(errMsg);
         }
       }
     });
@@ -168,7 +170,7 @@ function getParentDir(num) {
   else if (num <= 539) {
     return 'sol_0420_0539';
   }
-  else if (num <= 539) {
+  else if (num <= 659) {
     return 'sol_0540_0659';
   }
 
@@ -314,8 +316,8 @@ resetStartBtn.addEventListener('click', () => {
   startTime.value = "00:00:00";
   checkTime(startTime, startHelp);
 });
+
 resetEndBtn.addEventListener('click', () => {
   endTime.value = "23:59:59";
   checkTime(endTime, endHelp);
 });
-

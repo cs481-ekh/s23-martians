@@ -6,7 +6,11 @@ const generatePlot = function () {
   }
 
   let sensorName = sensor.options[sensor.selectedIndex].text;
-  let medaRef = medaFileList.find(ds => ds.id === Number.parseInt(sol.value) && ds.sensor === sensor.value);
+  let medaRef = medaFileList.find(
+    ds => ds.id === Number.parseInt(sol.value) &&
+    ds.productType === processLevel.value &&
+    ds.sensor === sensor.value
+  );
 
   shareURLBtn.disabled = true;
   exportDataBtn.disabled = true;
@@ -42,7 +46,12 @@ const generatePlot = function () {
     var yUnits = dataObj.map(item => item.Unit);
 
     if (yUnits.length > 0) {
-      yUnits = `(${yUnits})`;
+      if (yUnits[0].match("/m2")) {
+        yUnits = `( ${yUnits[0].replace("m2", "m<sup>2</sup>")} )`;
+      }
+      else {
+        yUnits = `( ${yUnits} )`;
+      }
     }
 
     var plotTitle = sensorName + "<br><sup>Sol " + sol.value + " - " + startTime.value + " to " + endTime.value + "</sup>";
