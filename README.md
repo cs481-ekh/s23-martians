@@ -65,3 +65,8 @@ Once the command has successfully completed with _exit code: 0_, the muldoon-web
 
 
 ## Testing muldoon-webapp
+To run the testing that has been built for the muldoon-webapp you will need to run the following command on the terminal.
+```
+$> pytest tests/
+```
+
