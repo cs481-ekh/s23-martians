@@ -20,15 +20,13 @@ to explore the data and collarborate in a more effective manner. Incorporation o
 existing analysis tools will build upon the interactive webpage implementation in the future.</p>
 
 <h2>Project Description</h2>
-<ul><i>TODO:</i>
-  <li><i>What was built</i></li>
-  <li><i>How it works</i></li>
-  <li><i>Screenshots</i></li>
-</ul>
 
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-scrambled it to make a type specimen book.</p>
+<h3>What was built</h3>
+
+<p> The final product that was built is a website that allows the user to select a specific Sol(A day on Mars) as well as the time range and type of data to display.  Once this information is selected the user will then be able to generate an interactive graph.  Once the graph has been generated that user will then be able to zoom in on the graph to get a better understanding of what is happening.  They will also have the option to save the image or copy the link to send to someone else so they can generate the exact same graph.  </p>
+
+<p>By just using Javascript and Node.js instead of a large frontend framework we were able to build a lighter website that is easier to manage.  To generate the graph used the Plotly for Javascript library. </p>
+
 
 <figure>
   <img src="./assets/images/muldoon-webapp.png" />
@@ -36,13 +34,11 @@ scrambled it to make a type specimen book.</p>
 </figure>
 
 <h3>User Interface (UI)</h3>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-scrambled it to make a type specimen book.</p>
+<p>The user interface is several fields that allow you to narrow down was data is displayed.</p>
 
 <figure>
   <img src="./assets/images/muldoon-webapp-ui.png" />
-  <figcaption>Figure 2: User interface (UI) for Mulldoon application</figcaption>
+  <figcaption>Figure 2: User interface (UI) for Muldoon application</figcaption>
 </figure>
 
 <ul>
